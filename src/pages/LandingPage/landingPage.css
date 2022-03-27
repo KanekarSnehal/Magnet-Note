@@ -1,0 +1,27 @@
+.landingPage-container {
+  margin: 2.5rem;
+  border-radius: 4rem;
+  display: flex;
+  box-shadow: var(--border-shadow);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.right-section {
+  padding: 2.5rem;
+  width: 50%;
+  height: 100%;
+}
+
+.left-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem 4rem;
+  width: 50%;
+  margin: 2.5rem;
+}

@@ -1,0 +1,21 @@
+.sideNav-container {
+  grid-area: sideNav;
+  margin: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 87vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  left: 0;
+  top: 2vh;
+}
+
+.user-logout {
+  margin-top: auto;
+}
+
+.sideNav-buttons {
+  width: 20vh;
+  margin-bottom: 1rem;
+}

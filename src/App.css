@@ -1,51 +1,44 @@
-.App {
-  text-align: center;
+:root {
+  --border-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+::-webkit-scrollbar {
+  width: var(--size-8);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: var(--size-8);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+.btn {
+  margin: 0.3rem;
 }
 
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+.btn-width-large {
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+i {
+  cursor: pointer;
 }
 
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
+.header-container {
+  z-index: 10;
 }
 
-.brand-title span {
-  color: #ffde59;
+.width-60 {
+  width: 60%;
 }
 
-.brand-description {
-  font-size: 1.4rem;
+.width-40 {
+  width: 40%;
 }
 
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.py-32 .btn {
+  width: auto;
 }
