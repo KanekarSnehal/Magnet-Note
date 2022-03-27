@@ -60,7 +60,7 @@ export function Signup() {
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   First Name
@@ -81,7 +81,7 @@ export function Signup() {
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Last Name
@@ -102,7 +102,7 @@ export function Signup() {
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Email
@@ -123,7 +123,7 @@ export function Signup() {
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   className="form-label text-bold-weight form-label-required-field"
                 >
                   Password
@@ -144,7 +144,7 @@ export function Signup() {
             <div className="row">
               <div className="column-30-pc">
                 <label
-                  for="first-name"
+                  htmlFor="first-name"
                   class="form-label text-bold-weight form-label-required-field"
                 >
                   Confirm Password
