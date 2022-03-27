@@ -1,0 +1,70 @@
+.note-input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  position: relative;
+  border-radius: 2rem;
+  height: fit-content;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.input-text-section .text {
+  background-color: initial;
+  width: 100%;
+  display: block;
+  border: none;
+  padding-right: 2rem;
+  outline: none;
+  word-wrap: break-word;
+  resize: none;
+  height: 4rem;
+  /* border: 2px solid red; */
+}
+
+.note-pin {
+  border: none;
+  background-color: initial;
+  font-size: larger;
+  cursor: pointer;
+  height: 3.5rem;
+  width: 3.5rem;
+  position: absolute;
+  top: 0.2rem;
+  right: 1rem;
+  color: inherit;
+}
+
+.edit-section-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 0rem 1rem;
+  font-size: larger;
+}
+
+.input-text-section .title {
+  height: 2.5rem;
+}
+
+.edit-section-container .btn {
+  width: auto;
+  margin-left: auto;
+  padding: 0.3rem 1rem;
+}
+
+.label {
+  background-color: var(--secondary-light);
+  width: fit-content;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+textarea {
+  margin-top: 0.5rem;
+  padding: 1rem;
+}
+
+.label-container {
+  margin-bottom: 1rem;
+}
