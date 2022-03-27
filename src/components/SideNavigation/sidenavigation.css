@@ -1,6 +1,5 @@
 .sideNav-container {
   grid-area: sideNav;
-  /* border: 2px solid red; */
   margin: 1rem;
   padding: 0.5rem;
   display: flex;

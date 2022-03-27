@@ -1,8 +1,6 @@
 .landingPage-container {
   margin: 2.5rem;
-  /* border: 2px solid red; */
   border-radius: 4rem;
-  /* padding: 1.5rem; */
   display: flex;
   box-shadow: var(--border-shadow);
 }
@@ -11,15 +9,12 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  /* border: 2px solid red; */
 }
 
 .right-section {
   padding: 2.5rem;
-  /* border: 2px solid red; */
   width: 50%;
   height: 100%;
-  /* margin-left: 5rem; */
 }
 
 .left-section {
@@ -29,6 +24,4 @@
   padding: 1rem 4rem;
   width: 50%;
   margin: 2.5rem;
-  /* border: 2px solid red; */
-  /* margin-right: 5rem; */
 }

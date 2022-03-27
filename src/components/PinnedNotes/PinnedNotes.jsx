@@ -23,7 +23,7 @@ export const PinnedNotes = () => {
               Study React
             </textarea>
             <button className=" note-pin badge-top-right ">
-              <i class="fas fa-thumbtack"></i>
+              <i className="fas fa-thumbtack"></i>
             </button>
           </div>
           <div className="label-container">
@@ -66,9 +66,9 @@ export const PinnedNotes = () => {
           </div>
           <div className="edit-section-container">
             <i className="fas fa-palette mr-32"></i>
-            <i class="fas fa-tags mr-32 "></i>
-            <i class="fas fa-archive mr-32"></i>
-            <i class="far fa-trash-alt mr-32"></i>
+            <i className="fas fa-tags mr-32 "></i>
+            <i className="fas fa-archive mr-32"></i>
+            <i className="far fa-trash-alt mr-32"></i>
             <p className="ml-auto">Created on 26/10/2021</p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export const PinnedNotes = () => {
               Study React
             </textarea>
             <button className=" note-pin badge-top-right ">
-              <i class="fas fa-thumbtack"></i>
+              <i className="fas fa-thumbtack"></i>
             </button>
           </div>
           <div className="label-container">
@@ -99,9 +99,9 @@ export const PinnedNotes = () => {
           </div>
           <div className="edit-section-container">
             <i className="fas fa-palette mr-32"></i>
-            <i class="fas fa-tags mr-32 "></i>
-            <i class="fas fa-archive mr-32"></i>
-            <i class="far fa-trash-alt mr-32"></i>
+            <i className="fas fa-tags mr-32 "></i>
+            <i className="fas fa-archive mr-32"></i>
+            <i className="far fa-trash-alt mr-32"></i>
             <p className="ml-auto">Created on 26/10/2021</p>
           </div>
         </div>
