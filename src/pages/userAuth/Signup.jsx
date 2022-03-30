@@ -37,7 +37,7 @@ export function Signup() {
       localStorage.setItem("token", data.encodedToken);
       authDispatch({
         type: authActionsConstants.GET_USER_DETAILS,
-        payload: data.createdUser,
+        payload: data.user,
       });
       navigate("/login");
     } catch {
@@ -145,7 +145,7 @@ export function Signup() {
               <div className="column-30-pc">
                 <label
                   htmlFor="first-name"
-                  class="form-label text-bold-weight form-label-required-field"
+                  className="form-label text-bold-weight form-label-required-field"
                 >
                   Confirm Password
                 </label>

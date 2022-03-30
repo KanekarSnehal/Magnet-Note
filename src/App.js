@@ -1,6 +1,15 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LandingPage, HomePage, Login, Signup } from "./pages/index";
+import {
+  LandingPage,
+  HomePage,
+  Login,
+  Signup,
+  LabelPage,
+  ArchivePage,
+  TrashPage,
+  ProfilePage,
+} from "./pages/index";
 import { GuestRoute, ProtectedRoute } from "./utilities/routes";
 
 function App() {
@@ -14,6 +23,10 @@ function App() {
         {/* </Route> */}
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<HomePage />} />
+          <Route path="/label" element={<LabelPage />} />
+          <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/trash" element={<TrashPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

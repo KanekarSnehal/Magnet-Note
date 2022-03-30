@@ -23,12 +23,19 @@
   width: 100%;
 }
 
-i {
+.icon {
   cursor: pointer;
+  border-radius: 50%;
+  padding: 0.4rem 0.45rem;
+}
+
+.icon:hover {
+  background-color: var(--secondary-lighter);
 }
 
 .header-container {
   z-index: 10;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .width-60 {
@@ -41,4 +48,9 @@ i {
 
 .py-32 .btn {
   width: auto;
+}
+
+.dark-mode-icon {
+  width: 2.8rem;
+  cursor: pointer;
 }
