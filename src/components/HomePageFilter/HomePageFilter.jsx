@@ -19,13 +19,13 @@ export const HomePageFilter = () => {
         <option value="Newest First">Newest First</option>
         <option value="Newest Last">Newest Last</option>
       </select>
-      <div className="my-16 text-left">
+      <div className="my-16 text-left display-flex-row">
         <label htmlFor="tags" className="mr-16">
           Select tags
         </label>
         <Dropdown data={tagOptions} />
         {tagOptions.map((tagItem) => (
-          <span className="mx-8 label">
+          <span className="mx-8 my-8 label">
             {tagItem}
             <i className="fa-solid fa-xmark  icon"></i>
           </span>

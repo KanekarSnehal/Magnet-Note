@@ -6,7 +6,6 @@ import { ModalInput } from "../ModalInput/ModalInput";
 export const SideNavigation = () => {
   const { modalState, modalDispatch } = useModal();
   const { user } = useAuthContext();
-  console.log(user);
   const navigate = useNavigate();
   return (
     <div className="sideNav-container ">
