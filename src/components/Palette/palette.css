@@ -1,0 +1,21 @@
+.colorPaletteContainer {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 2rem 2rem 2rem 2rem;
+  grid-template-rows: 2rem 2rem 2rem;
+  grid-gap: 5px;
+  padding: 5px;
+  z-index: 10;
+  background-color: var(--secondary-color);
+  border-radius: 1rem;
+  margin: 0.3rem;
+}
+
+.colorPalette {
+  border-radius: 50%;
+  border: 2px solid var(--secondary-color);
+}
+
+.colorPalette:hover {
+  border: 2px solid var(--primary-color);
+}
