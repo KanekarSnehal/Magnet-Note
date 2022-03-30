@@ -76,7 +76,7 @@ export const SideNavigation = () => {
           className="avatar avatar-xs-size"
           alt="avatar"
         />
-        <span>Snehal Kanekar</span>
+        <span>Hello, Snehal</span>
         <i className="fas fa-sign-out ml-16"></i>
       </div>
     </div>
