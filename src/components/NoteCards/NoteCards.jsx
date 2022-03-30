@@ -19,7 +19,7 @@ export const NoteCards = ({ data }) => {
                 <i className="fas fa-thumbtack icon"></i>
               </button>
               <div className="label-container">
-                {dataItem.label !== [] &&
+                {dataItem.label.length !== 0 &&
                   dataItem.label.map((labelItem) => (
                     <span className="label">{labelItem}</span>
                   ))}

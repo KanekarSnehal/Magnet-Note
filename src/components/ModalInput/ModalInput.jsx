@@ -11,7 +11,7 @@ export const ModalInput = () => {
   return (
     <div
       className="overlay"
-      onClick={() => modalDispatch({ type: "CLOSE_MODAL", payload: "" })}
+      onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
     >
       <div className="modal">
         <div
@@ -51,9 +51,7 @@ export const ModalInput = () => {
               <button className="btn primary-btn">{buttonType}</button>
               <button
                 className="btn secondary-btn"
-                onClick={() =>
-                  modalDispatch({ type: "CLOSE_MODAL", payload: "" })
-                }
+                onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
               >
                 Close
               </button>

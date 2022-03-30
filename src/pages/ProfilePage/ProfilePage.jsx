@@ -6,7 +6,7 @@ export const ProfilePage = () => {
       <Header />
       <div className="display-conatiner">
         <SideNavigation />
-        <h1>Coming soon...</h1>
+        <button className="btn primary-btn width-40">Logout</button>
       </div>
     </>
   );
