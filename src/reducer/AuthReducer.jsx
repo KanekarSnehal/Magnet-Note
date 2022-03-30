@@ -11,7 +11,7 @@ const AuthReducer = (authState, authAction) => {
     case GET_USER_DETAILS:
       return {
         ...authState,
-        user: [authAction.payload],
+        user: authAction.payload,
         isAuthenticated: true,
       };
     case USER_LOGOUT:

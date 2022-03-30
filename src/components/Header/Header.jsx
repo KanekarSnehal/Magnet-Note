@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
+
 export const Header = () => {
   return (
-    <header class="header-container">
-      <a href="#" class="logo-container">
-        <img src="icon.png" alt="logo" class="brand-logo" />
-        <span class="brand-name">Note App </span>
-      </a>
+    <header className="header-container">
+      <Link className="logo-container" to="/home">
+        <img src="icon.png" alt="logo" className="brand-logo" />
+        <span className="brand-name">Note App </span>
+      </Link>
+      <img
+        src="https://i.ibb.co/WstYhz3/night-mode-3.png"
+        className="dark-mode-icon ml-auto"
+      />
     </header>
   );
 };

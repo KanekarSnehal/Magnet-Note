@@ -19,3 +19,8 @@
   width: 20vh;
   margin-bottom: 1rem;
 }
+
+.active {
+  background-color: var(--secondary-dark);
+  color: var(--complement-btn-text-color);
+}

@@ -18,7 +18,6 @@ export const Login = () => {
   };
 
   const postLoginData = async (e) => {
-    console.log("hhhhhhhhhhh");
     e.preventDefault();
     try {
       const { data } = await axios.post(`/api/auth/login`, {
@@ -26,10 +25,11 @@ export const Login = () => {
         password: userInfo.password,
       });
 
+      console.log(data.user);
       localStorage.setItem("token", data.encodedToken);
       authDispatch({
         type: authActionsConstants.GET_USER_DETAILS,
-        payload: data.createdUser,
+        payload: data.user,
       });
       navigate("/home");
     } catch (error) {

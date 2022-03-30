@@ -1,27 +1,34 @@
-import "./homePage.css";
 import {
   Header,
   SideNavigation,
   NoteCards,
-  HomePageFilter,
+  UpdateLabels,
 } from "../../components/index";
 import { data } from "../../data";
 
-export const HomePage = () => {
+export const LabelPage = () => {
   return (
     <>
       <Header />
       <div className="display-conatiner">
         <SideNavigation />
         <div className="main-content-container">
-          <HomePageFilter />
+          <UpdateLabels />
           <div>
             <h4 className="text-center my-16">Pinned</h4>
-            <NoteCards data={data.filter((dataItem) => dataItem.isPinned)} />
+            <NoteCards
+              data={data.filter(
+                (dataItem) => dataItem.isPinned && dataItem.label.length !== 0
+              )}
+            />
           </div>
           <div>
             <h4 className="text-center my-16">Others</h4>
-            <NoteCards data={data.filter((dataItem) => !dataItem.isPinned)} />
+            <NoteCards
+              data={data.filter(
+                (dataItem) => !dataItem.isPinned && dataItem.label.length !== 0
+              )}
+            />
           </div>
         </div>
       </div>
