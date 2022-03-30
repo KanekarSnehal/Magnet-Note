@@ -1,5 +1,3 @@
-import "./updateLabels.css";
-
 export const UpdateLabels = () => {
   const labelArr = ["class", "work", "study"];
   return (

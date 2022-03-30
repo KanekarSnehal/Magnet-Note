@@ -10,10 +10,7 @@ export const NoteCards = ({ data }) => {
       <div className="notes-keeping-area ">
         {data &&
           data.map((dataItem) => (
-            <div
-              className="note-input-container grid-item-note"
-              // key={dataItem.id}
-            >
+            <div className="note-input-container grid-item-note">
               <div className="input-text-section">
                 <h6>{dataItem.title}</h6>
                 <p>{dataItem.body}</p>
