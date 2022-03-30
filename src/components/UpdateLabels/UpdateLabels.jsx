@@ -3,12 +3,15 @@ export const UpdateLabels = () => {
   return (
     <fieldset className="py-16 px-32 text-center">
       <legend>Update Labels</legend>
-      {labelArr.map((labelItem) => (
-        <span className="mx-8 label">
-          {labelItem}
-          <i className="fa-solid fa-xmark  icon"></i>
-        </span>
-      ))}
+      <div className="display-flex-row">
+        {labelArr.map((labelItem) => (
+          <span className="mx-8 my-8 label">
+            {labelItem}
+            <i className="fa-solid fa-xmark  icon"></i>
+          </span>
+        ))}
+      </div>
+
       <div>
         <input
           type="text"
