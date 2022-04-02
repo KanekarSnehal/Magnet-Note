@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./palette.css";
+import { useNotes } from "../../context/index";
+
 const palette = [
   "#FFFFFF",
   "#f28983",
@@ -15,24 +17,42 @@ const palette = [
   "#E8EAED",
 ];
 
-export const Palette = () => {
+export const Palette = ({ dataItem, type, setNoteInfo }) => {
   const [isHidden, setIsHidden] = useState(true);
+  const { notes, noteData, noteDispatch } = useNotes();
+  // console.log(noteData);
+  // console.log(notes);
   return (
     <>
       <i
-        className="fas fa-palette mr-16 icon"
+        className="bx bx-palette mr-16 icon"
         onMouseOver={() => setIsHidden(!isHidden)}
         onMouseOut={() => setIsHidden(!isHidden)}
       >
         <div
-          className="colorPaletteContainer"
+          className="color-palette-container"
           style={{ display: isHidden ? "none" : "grid" }}
         >
           {palette.map((color) => (
             <div
+              id={color}
               key={color}
-              className="colorPalette"
+              className="color-palette"
               style={{ backgroundColor: color }}
+              onClick={() => {
+                type === "modal"
+                  ? setNoteInfo((prevNoteData) => {
+                      return {
+                        ...prevNoteData,
+                        noteColor: color,
+                      };
+                    })
+                  : noteDispatch({
+                      type: "COLOR_CHANGE",
+                      payload1: color,
+                      payload2: dataItem._id,
+                    });
+              }}
             ></div>
           ))}
         </div>

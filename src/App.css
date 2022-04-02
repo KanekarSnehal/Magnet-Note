@@ -27,6 +27,7 @@
   cursor: pointer;
   border-radius: 50%;
   padding: 0.4rem 0.45rem;
+  font-size: 1.6rem;
 }
 
 .icon:hover {
@@ -54,3 +55,11 @@
   width: 2.8rem;
   cursor: pointer;
 }
+
+/* .active-icon{
+  color:var(--secondary-color)
+} */
+
+/* .inactive-icon{
+  color:var(--secondary-color)
+} */

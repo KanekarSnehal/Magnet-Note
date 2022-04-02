@@ -1,4 +1,4 @@
-.colorPaletteContainer {
+.color-palette-container {
   position: absolute;
   display: grid;
   grid-template-columns: 2rem 2rem 2rem 2rem;
@@ -11,11 +11,11 @@
   margin: 0.3rem;
 }
 
-.colorPalette {
+.color-palette {
   border-radius: 50%;
   border: 2px solid var(--secondary-color);
 }
 
-.colorPalette:hover {
+.color-palette:hover {
   border: 2px solid var(--primary-color);
 }

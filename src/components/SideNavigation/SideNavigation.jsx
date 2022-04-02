@@ -1,12 +1,14 @@
 import "./sidenavigation.css";
 import { useNavigate } from "react-router-dom";
-import { useModal, useAuthContext } from "../../context/index";
+import { useModal, useAuthContext, useNotes } from "../../context/index";
 import { ModalInput } from "../ModalInput/ModalInput";
 
 export const SideNavigation = () => {
   const { modalState, modalDispatch } = useModal();
   const { user } = useAuthContext();
   const navigate = useNavigate();
+  const { notes, noteData, noteDispatch } = useNotes();
+
   return (
     <div className="sideNav-container ">
       <div className="sideNav-buttons">
@@ -64,7 +66,10 @@ export const SideNavigation = () => {
 
       <button
         className="btn primary-btn my-16"
-        onClick={() => modalDispatch({ type: "ADD_NOTE", payload: "ADD" })}
+        onClick={() => {
+          modalDispatch({ type: "ADD_NOTE" });
+          noteDispatch({ type: "ADD_NOTE" });
+        }}
       >
         Create New Note
       </button>
