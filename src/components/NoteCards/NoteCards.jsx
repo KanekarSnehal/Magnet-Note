@@ -7,8 +7,7 @@ import { addNote, updateNote } from "../../services/noteServices";
 export const NoteCards = ({ data }) => {
   const { modalState, modalDispatch } = useModal();
   const { notes, noteData, noteDispatch, currNote } = useNotes();
-  // console.log(notes);
-  // console.log(noteData);
+
   const { isPinned, isTrashed, isArchived, noteColor } = noteData;
 
   useEffect(() => {
@@ -16,10 +15,7 @@ export const NoteCards = ({ data }) => {
       try {
         const { data } = await updateNote(noteData._id, noteData);
         noteDispatch({ type: "NOTE_UPDATED", payload: data.notes });
-        // console.log(data.notes);
-      } catch (error) {
-        // console.log(error);
-      }
+      } catch (error) {}
     })();
   }, [noteData]);
 

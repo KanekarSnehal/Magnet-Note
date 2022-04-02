@@ -46,19 +46,14 @@ export const ModalInput = () => {
     try {
       const { data } = await addNote(noteInfo);
       noteDispatch({ type: "NOTE_ADDED", payload: data.notes });
-      console.log(data.notes);
     } catch (error) {}
   };
 
   const handleUpdateNote = async () => {
-    // console.log(noteData, noteData.id);
     try {
       const { data } = await updateNote(noteInfo._id, noteInfo);
       noteDispatch({ type: "NOTE_UPDATED", payload: data.notes });
-      // console.log(data.notes);
-    } catch (error) {
-      // console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

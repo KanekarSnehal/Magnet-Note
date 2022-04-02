@@ -20,8 +20,7 @@ const palette = [
 export const Palette = ({ dataItem, type, setNoteInfo }) => {
   const [isHidden, setIsHidden] = useState(true);
   const { notes, noteData, noteDispatch } = useNotes();
-  // console.log(noteData);
-  // console.log(notes);
+
   return (
     <>
       <i

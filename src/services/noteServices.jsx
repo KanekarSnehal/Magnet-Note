@@ -13,7 +13,6 @@ export const addNote = async (note) => {
 };
 
 export const updateNote = async (noteID, note) => {
-  // console.log("servvvvvvvvvvvvvvvvv");
   return await axios.post(`/api/notes/${noteID}`, { note }, config);
 };
 
