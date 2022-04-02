@@ -19,7 +19,6 @@ const ModalReducer = (modalState, modalAction) => {
         ...modalState,
         show: true,
         buttonType: "Update",
-        noteInfo: modalAction.payload,
       };
     case CLOSE_MODAL:
       return { ...modalState, show: false };
@@ -30,8 +29,8 @@ const ModalProvider = ({ children }) => {
   const [modalState, modalDispatch] = useReducer(ModalReducer, {
     show: false,
     buttonType: "ADD",
-    noteInfo: {},
   });
+
   return (
     <ModalContext.Provider value={{ modalState, modalDispatch }}>
       {children}

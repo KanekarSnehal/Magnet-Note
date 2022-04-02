@@ -13,6 +13,7 @@
   word-wrap: break-word;
   resize: none;
   outline: none;
+  background-color: initial;
 }
 
 .note-pin {

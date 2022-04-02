@@ -25,7 +25,6 @@ export const Login = () => {
         password: userInfo.password,
       });
 
-      console.log(data.user);
       localStorage.setItem("token", data.encodedToken);
       authDispatch({
         type: authActionsConstants.GET_USER_DETAILS,
