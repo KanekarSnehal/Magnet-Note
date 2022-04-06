@@ -40,6 +40,7 @@ export const Login = () => {
       });
     }
   };
+
   return (
     <div>
       <Header />
@@ -80,13 +81,7 @@ export const Login = () => {
             >
               LOGIN
             </button>
-            <button
-              className="btn primary-btn text-center"
-              type="submit"
-              onClick={postLoginData}
-            >
-              LOGIN WITH TEST CREDENTIALS
-            </button>
+
             <div className="py-16">
               Not a user yet?
               <Link to="/signup" className="link-btn">
