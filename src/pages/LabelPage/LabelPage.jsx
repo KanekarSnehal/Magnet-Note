@@ -5,8 +5,11 @@ import {
   UpdateLabels,
 } from "../../components/index";
 import { data } from "../../data";
+import { useNotes } from "../../context/index";
 
 export const LabelPage = () => {
+  const { notes } = useNotes();
+
   return (
     <>
       <Header />
@@ -15,20 +18,7 @@ export const LabelPage = () => {
         <div className="main-content-container">
           <UpdateLabels />
           <div>
-            <h4 className="text-center my-16">Pinned</h4>
-            <NoteCards
-              data={data.filter(
-                (dataItem) => dataItem.isPinned && dataItem.label.length !== 0
-              )}
-            />
-          </div>
-          <div>
-            <h4 className="text-center my-16">Others</h4>
-            <NoteCards
-              data={data.filter(
-                (dataItem) => !dataItem.isPinned && dataItem.label.length !== 0
-              )}
-            />
+            <NoteCards data={notes} disableUpdate />
           </div>
         </div>
       </div>

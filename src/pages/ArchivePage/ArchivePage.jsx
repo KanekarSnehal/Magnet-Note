@@ -1,7 +1,9 @@
 import { Header, SideNavigation, NoteCards } from "../../components/index";
 import { data } from "../../data";
+import { useNotes } from "../../context/index";
 
 export const ArchivePage = () => {
+  const { archiveNotes } = useNotes();
   return (
     <>
       <Header />
@@ -9,20 +11,11 @@ export const ArchivePage = () => {
         <SideNavigation />
         <div className="main-content-container">
           <div>
-            <h4 className="text-center my-16">Pinned</h4>
-            <NoteCards
-              data={data.filter(
-                (dataItem) => dataItem.isPinned && dataItem.isArchived
-              )}
-            />
-          </div>
-          <div>
-            <h4 className="text-center my-16">Others</h4>
-            <NoteCards
-              data={data.filter(
-                (dataItem) => !dataItem.isPinned && dataItem.isArchived
-              )}
-            />
+            {archiveNotes.length === 0 ? (
+              <h6>No archived notes added...</h6>
+            ) : (
+              <NoteCards data={archiveNotes} disableUpdate archivedNote />
+            )}
           </div>
         </div>
       </div>

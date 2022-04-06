@@ -26,6 +26,8 @@ export const Login = () => {
       });
 
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("firstName", data.foundUser.firstName);
+
       authDispatch({
         type: authActionsConstants.GET_USER_DETAILS,
         payload: data.user,
@@ -78,7 +80,13 @@ export const Login = () => {
             >
               LOGIN
             </button>
-
+            <button
+              className="btn primary-btn text-center"
+              type="submit"
+              onClick={postLoginData}
+            >
+              LOGIN WITH TEST CREDENTIALS
+            </button>
             <div className="py-16">
               Not a user yet?
               <Link to="/signup" className="link-btn">

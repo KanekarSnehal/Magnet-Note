@@ -6,8 +6,10 @@ import {
   HomePageFilter,
 } from "../../components/index";
 import { data } from "../../data";
+import { useModal, useNotes } from "../../context/index";
 
 export const HomePage = () => {
+  const { notes, noteData, noteDispatch, currNote } = useNotes();
   return (
     <>
       <Header />
@@ -17,11 +19,21 @@ export const HomePage = () => {
           <HomePageFilter />
           <div>
             <h4 className="text-center my-16">Pinned</h4>
-            <NoteCards data={data.filter((dataItem) => dataItem.isPinned)} />
+            {notes.length === 0 ? (
+              <h6>No pinned notes added...</h6>
+            ) : (
+              <NoteCards data={notes.filter((dataItem) => dataItem.isPinned)} />
+            )}
           </div>
           <div>
             <h4 className="text-center my-16">Others</h4>
-            <NoteCards data={data.filter((dataItem) => !dataItem.isPinned)} />
+            {notes.length === 0 ? (
+              <h6>No other notes added...</h6>
+            ) : (
+              <NoteCards
+                data={notes.filter((dataItem) => !dataItem.isPinned)}
+              />
+            )}
           </div>
         </div>
       </div>

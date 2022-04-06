@@ -2,7 +2,8 @@ import { v4 as uuid } from "uuid";
 
 const NoteConstants = {
   PINNING_NOTE: "PINNING_NOTE",
-  ARCHIVING_NOTE: "ARCHIVING_NOTE",
+  ARCHIVE_NOTE: "ARCHIVE_NOTE",
+  UNARCHIVE_NOTE: "UNARCHIVE_NOTE",
   TRASHING_NOTE: "TRASHING_NOTE",
   COLOR_CHANGE: "COLOR_CHANGE",
   LABEL_CHANGE: "LABEL_CHANGE",
@@ -13,13 +14,16 @@ const NoteConstants = {
   ADD_NOTE: "ADD_NOTE",
   NOTE_ADDED: "NOTE_ADDED",
   NOTE_UPDATED: "NOTE_UPDATED",
-  SELECT_NOTE: "SELECT_NOTE",
+  SET_ARCHIVE_NOTES: "SET_ARCHIVE_NOTES",
+  DELETED_FROM_ARCHIVE: "DELETED_FROM_ARCHIVE",
+  DELETED_FROM_TRASH: "DELETED_FROM_TRASH",
+  ADD_TO_TRASH: "ADD_TO_TRASH",
+  REMOVE_FROM_TRASH: "REMOVE_FROM_TRASH",
 };
 
 export const NoteReducer = (noteState, noteAction) => {
   const {
     PINNING_NOTE,
-    ARCHIVING_NOTE,
     TRASHING_NOTE,
     COLOR_CHANGE,
     LABEL_CHANGE,
@@ -30,10 +34,16 @@ export const NoteReducer = (noteState, noteAction) => {
     ADD_NOTE,
     NOTE_ADDED,
     NOTE_UPDATED,
-    SELECT_NOTE,
+    ARCHIVE_NOTE,
+    UNARCHIVE_NOTE,
+    DELETED_FROM_ARCHIVE,
+    SET_ARCHIVE_NOTES,
+    DELETED_FROM_TRASH,
+    ADD_TO_TRASH,
+    REMOVE_FROM_TRASH,
   } = NoteConstants;
 
-  const { notes, noteData } = noteState;
+  const { notes, noteData, archiveNotes, trashNotes } = noteState;
 
   switch (noteAction.type) {
     case PINNING_NOTE:
@@ -48,30 +58,34 @@ export const NoteReducer = (noteState, noteAction) => {
           isPinned: !newNoteData.isPinned,
         },
       };
-    case ARCHIVING_NOTE:
-      const newNoteData1 = notes.find(
-        (noteItem) => noteItem._id === noteAction.payload
-      );
 
+    case ARCHIVE_NOTE:
       return {
         ...noteState,
         noteData: {
-          ...newNoteData1,
-          isArchived: !newNoteData1.isArchived,
+          ...noteAction.payload,
+          isArchived: true,
         },
       };
+
+    case UNARCHIVE_NOTE:
+      return {
+        ...noteState,
+        noteData: {
+          ...noteAction.payload,
+          isArchived: false,
+        },
+      };
+
     case TRASHING_NOTE:
-      const newNoteData2 = notes.find(
-        (noteItem) => noteItem._id === noteAction.payload
-      );
-
       return {
         ...noteState,
         noteData: {
-          ...newNoteData2,
-          isTrashed: !newNoteData2.isTrashed,
+          ...noteAction.payload,
+          isArchived: !noteAction.payload.isTrashed,
         },
       };
+
     case COLOR_CHANGE:
       const newNoteData3 = notes.find(
         (noteItem) => noteItem._id === noteAction.payload2
@@ -84,38 +98,7 @@ export const NoteReducer = (noteState, noteAction) => {
           noteColor: noteAction.payload1,
         },
       };
-    case LABEL_CHANGE:
-      return {
-        ...noteState,
-        noteData: {
-          ...noteState.noteData,
-          label: noteAction.payload,
-        },
-      };
-    case PRIORITY_CHANGE:
-      return {
-        ...noteState,
-        noteData: {
-          ...noteState.noteData,
-          priority: noteAction.payload,
-        },
-      };
-    case TITLE_CHANGE:
-      return {
-        ...noteState,
-        noteData: {
-          ...noteState.noteData,
-          title: noteAction.payload,
-        },
-      };
-    case BODY_CHANGE:
-      return {
-        ...noteState,
-        noteData: {
-          ...noteState.noteData,
-          body: noteAction.payload,
-        },
-      };
+
     case UPDATE_NOTE:
       return { ...noteState, noteData: noteAction.payload };
     case ADD_NOTE:
@@ -133,9 +116,39 @@ export const NoteReducer = (noteState, noteAction) => {
           createdOn: Date.now(),
         },
       };
+
     case NOTE_ADDED:
       return { ...noteState, notes: noteAction.payload };
+
     case NOTE_UPDATED:
       return { ...noteState, notes: noteAction.payload };
+
+    case SET_ARCHIVE_NOTES:
+      return {
+        ...noteState,
+        notes: noteAction.payload1,
+        archiveNotes: noteAction.payload2,
+      };
+    case DELETED_FROM_ARCHIVE:
+      return { ...noteState, archiveNotes: noteAction.payload };
+    case DELETED_FROM_TRASH:
+      return { ...noteState, notes: noteAction.payload };
+    case ADD_TO_TRASH:
+      const newNotes = notes.filter(
+        (note) => note._id != noteAction.payload._id
+      );
+      return {
+        ...noteState,
+        notes: newNotes,
+        trashNotes: [...noteState.trashNotes, noteAction.payload],
+      };
+    case REMOVE_FROM_TRASH:
+      const newTrashNotes = trashNotes.filter(
+        (note) => note._id != noteAction.payload._id
+      );
+      return {
+        ...noteState,
+        trashNotes: newTrashNotes,
+      };
   }
 };

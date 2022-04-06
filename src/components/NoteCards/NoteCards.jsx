@@ -1,14 +1,25 @@
 import { Palette, Label } from "../index";
 import { useModal, useNotes } from "../../context/index";
-import { ModalInput } from "../ModalInput/ModalInput";
-import { useEffect } from "react";
-import { addNote, updateNote } from "../../services/noteServices";
+import ReactTooltip from "react-tooltip";
+import { useEffect, useState } from "react";
+import {
+  addNote,
+  updateNote,
+  addToArchivedNote,
+  deleteNote,
+  removeFromArchivedNote,
+  deleteFromArchivedNote,
+} from "../../services/noteServices";
 
-export const NoteCards = ({ data }) => {
+export const NoteCards = ({
+  data,
+  disableUpdate,
+  archivedNote,
+  trashedNote,
+}) => {
   const { modalState, modalDispatch } = useModal();
-  const { notes, noteData, noteDispatch, currNote } = useNotes();
-
-  const { isPinned, isTrashed, isArchived, noteColor } = noteData;
+  const { notes, noteData, noteDispatch, archiveNotes, trashNotes } =
+    useNotes();
 
   useEffect(() => {
     (async () => {
@@ -17,13 +28,63 @@ export const NoteCards = ({ data }) => {
         noteDispatch({ type: "NOTE_UPDATED", payload: data.notes });
       } catch (error) {}
     })();
-  }, [noteData]);
+  }, [noteData.isPinned, noteData.noteColor]);
 
+  const handleArchive = async (dataItem) => {
+    try {
+      const { data } = archivedNote
+        ? await removeFromArchivedNote({
+            ...dataItem,
+            isArchived: false,
+          })
+        : await addToArchivedNote({
+            ...dataItem,
+            isArchived: true,
+          });
+      noteDispatch({
+        type: "SET_ARCHIVE_NOTES",
+        payload1: data.notes,
+        payload2: data.archives,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (dataItem) => {
+    try {
+      if (archivedNote) {
+        const { data } = await deleteFromArchivedNote(dataItem._id);
+        noteDispatch({ type: "DELETED_FROM_ARCHIVE", payload: data.archives });
+      } else if (trashedNote) {
+        const { data } = deleteNote(dataItem._id);
+        noteDispatch({ type: "DELETED_FROM_TRASH", payload: data.notes });
+      } else {
+        noteDispatch({ type: "ADD_TO_TRASH", payload: dataItem });
+        const { data } = await deleteNote(dataItem._id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFromTrash = async (dataItem) => {
+    try {
+      const { data } = await addNote(dataItem);
+      noteDispatch({ type: "NOTE_ADDED", payload: data.notes });
+      noteDispatch({
+        type: "REMOVE_FROM_TRASH",
+        payload: dataItem,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="notes-keeping-area ">
-        {notes.length !== 0 &&
-          notes.map((dataItem) => (
+        {data.length !== 0 &&
+          data.map((dataItem) => (
             <div
               className="note-input-container grid-item-note "
               style={{ backgroundColor: dataItem.noteColor }}
@@ -32,91 +93,115 @@ export const NoteCards = ({ data }) => {
                 <h6>{dataItem.title}</h6>
                 <p>{dataItem.body}</p>
               </div>
-              <button className=" note-pin badge-top-right ">
-                {dataItem.isPinned ? (
-                  <i
-                    class="bx bxs-pin mr-16 icon"
-                    onClick={() =>
-                      noteDispatch({
-                        type: "PINNING_NOTE",
-                        payload: dataItem._id,
-                      })
-                    }
-                  ></i>
-                ) : (
-                  <i
-                    class="bx bx-pin mr-16 icon"
-                    onClick={() =>
-                      noteDispatch({
-                        type: "PINNING_NOTE",
-                        payload: dataItem._id,
-                      })
-                    }
-                  ></i>
-                )}
-              </button>
+              {!disableUpdate && (
+                <button className=" note-pin badge-top-right ">
+                  {dataItem.isPinned ? (
+                    <i
+                      class="bx bxs-pin mr-16 icon"
+                      onClick={() =>
+                        noteDispatch({
+                          type: "PINNING_NOTE",
+                          payload: dataItem._id,
+                        })
+                      }
+                    ></i>
+                  ) : (
+                    <i
+                      class="bx bx-pin mr-16 icon"
+                      onClick={() =>
+                        noteDispatch({
+                          type: "PINNING_NOTE",
+                          payload: dataItem._id,
+                        })
+                      }
+                    ></i>
+                  )}
+                </button>
+              )}
+
               <div className="label-container">
                 <span className="label">{dataItem.label}</span>
                 <span className="label">{dataItem.priority}</span>
               </div>
 
               <div className="edit-section-container">
-                <Palette dataItem={dataItem} type={"card"} />
-                {dataItem.isArchived ? (
+                {!disableUpdate && (
+                  <Palette
+                    dataItem={dataItem}
+                    type={"card"}
+                    id={dataItem._id}
+                  />
+                )}
+
+                {archivedNote ? (
                   <i
                     class="bx bxs-archive-in bx-flip-horizontal mr-16 icon"
-                    onClick={() =>
+                    onClick={() => {
                       noteDispatch({
-                        type: "ARCHIVING_NOTE",
-                        payload: dataItem._id,
-                      })
-                    }
+                        type: "UNARCHIVE_NOTE",
+                        payload: dataItem,
+                      });
+                      handleArchive(dataItem);
+                    }}
                   ></i>
                 ) : (
                   <i
                     class="bx bx-archive-in bx-flip-horizontal mr-16 icon "
-                    onClick={() =>
-                      noteDispatch({
-                        type: "ARCHIVING_NOTE",
-                        payload: dataItem._id,
-                      })
-                    }
+                    onClick={() => {
+                      noteDispatch({ type: "ARCHIVE_NOTE", payload: dataItem });
+                      handleArchive(dataItem);
+                    }}
                   ></i>
                 )}
-                {dataItem.isTrashed ? (
-                  <i
-                    class="bx bxs-trash mr-16 icon"
-                    onClick={() =>
-                      noteDispatch({
-                        type: "TRASHING_NOTE",
-                        payload: dataItem._id,
-                      })
-                    }
-                  ></i>
+                {trashedNote ? (
+                  <>
+                    <i
+                      class="bx bxs-trash mr-16 icon"
+                      onClick={() => removeFromTrash(dataItem)}
+                    ></i>
+                    <i
+                      class="bx bxs-trash mr-16 icon error-color"
+                      data-tip
+                      data-for="deleteTip"
+                      onClick={() => {
+                        handleDelete(dataItem);
+                        noteDispatch({
+                          type: "TRASHING_NOTE",
+                          payload: dataItem,
+                        });
+                      }}
+                    ></i>
+                    <ReactTooltip id="deleteTip" place="top" effect="solid">
+                      Click to delete permanently
+                    </ReactTooltip>
+                  </>
                 ) : (
                   <i
                     class="bx bx-trash mr-16 icon"
-                    onClick={() =>
+                    onClick={() => {
+                      handleDelete(dataItem);
                       noteDispatch({
                         type: "TRASHING_NOTE",
-                        payload: dataItem._id,
-                      })
-                    }
+                        payload: dataItem,
+                      });
+                    }}
+                  ></i>
+                )}
+                {!disableUpdate && (
+                  <i
+                    className="bx bxs-edit icon"
+                    onClick={() => {
+                      noteDispatch({
+                        type: "UPDATE_NOTE",
+                        payload: dataItem,
+                      });
+                      modalDispatch({
+                        type: "UPDATE_NOTE",
+                      });
+                    }}
                   ></i>
                 )}
 
-                <i
-                  className="bx bxs-edit icon"
-                  onClick={() => {
-                    noteDispatch({
-                      type: "UPDATE_NOTE",
-                      payload: dataItem,
-                    });
-                    modalDispatch({
-                      type: "UPDATE_NOTE",
-                    });
-                  }}
-                ></i>
                 <p className="ml-auto">
                   Created on {new Date(dataItem.createdOn).toDateString()}
                 </p>

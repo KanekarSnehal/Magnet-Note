@@ -30,6 +30,7 @@ const AuthReducer = (authState, authAction) => {
         isAuthenticated: false,
         error: authAction.payload,
       };
+
     default:
       return authState;
   }

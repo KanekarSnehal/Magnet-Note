@@ -55,3 +55,7 @@
   width: 2.8rem;
   cursor: pointer;
 }
+
+.error-color{
+  color:var(--error-color)
+}
