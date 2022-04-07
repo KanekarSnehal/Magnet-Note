@@ -57,7 +57,7 @@ export const NoteCards = ({
         const { data } = await deleteFromArchivedNote(dataItem._id);
         noteDispatch({ type: "DELETED_FROM_ARCHIVE", payload: data.archives });
       } else if (trashedNote) {
-        const { data } = deleteNote(dataItem._id);
+        const { data } = await deleteNote(dataItem._id);
         noteDispatch({ type: "DELETED_FROM_TRASH", payload: data.notes });
       } else {
         noteDispatch({ type: "ADD_TO_TRASH", payload: dataItem });
@@ -169,9 +169,8 @@ export const NoteCards = ({
                       data-tip
                       data-for="deleteTip"
                       onClick={() => {
-                        handleDelete(dataItem);
                         noteDispatch({
-                          type: "TRASHING_NOTE",
+                          type: "REMOVE_FROM_TRASH",
                           payload: dataItem,
                         });
                       }}

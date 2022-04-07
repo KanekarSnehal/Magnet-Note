@@ -59,3 +59,11 @@
 .error-color{
   color:var(--error-color)
 }
+
+.width-fit-content{
+  width: fit-content;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
