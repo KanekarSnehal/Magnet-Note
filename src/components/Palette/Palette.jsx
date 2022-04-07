@@ -17,7 +17,7 @@ const palette = [
   "#E8EAED",
 ];
 
-export const Palette = ({ dataItem, type, setNoteInfo }) => {
+export const Palette = ({ type, id, setNoteInfo }) => {
   const [isHidden, setIsHidden] = useState(true);
   const { notes, noteData, noteDispatch } = useNotes();
 
@@ -38,20 +38,20 @@ export const Palette = ({ dataItem, type, setNoteInfo }) => {
               key={color}
               className="color-palette"
               style={{ backgroundColor: color }}
-              onClick={() => {
-                type === "modal"
-                  ? setNoteInfo((prevNoteData) => {
+              onClick={() =>
+                type === "card"
+                  ? noteDispatch({
+                      type: "COLOR_CHANGE",
+                      payload1: color,
+                      payload2: id,
+                    })
+                  : setNoteInfo((prevNoteData) => {
                       return {
                         ...prevNoteData,
                         noteColor: color,
                       };
                     })
-                  : noteDispatch({
-                      type: "COLOR_CHANGE",
-                      payload1: color,
-                      payload2: dataItem._id,
-                    });
-              }}
+              }
             ></div>
           ))}
         </div>

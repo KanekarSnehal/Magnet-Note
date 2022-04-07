@@ -26,6 +26,8 @@ export const Login = () => {
       });
 
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("firstName", data.foundUser.firstName);
+
       authDispatch({
         type: authActionsConstants.GET_USER_DETAILS,
         payload: data.user,
@@ -38,6 +40,7 @@ export const Login = () => {
       });
     }
   };
+
   return (
     <div>
       <Header />

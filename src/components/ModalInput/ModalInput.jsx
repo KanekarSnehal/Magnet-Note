@@ -24,18 +24,6 @@ export const ModalInput = () => {
     });
   };
 
-  const handleArchivedNote = () => {
-    setNoteInfo((prevNoteData) => {
-      return { ...prevNoteData, isArchived: !prevNoteData.isArchived };
-    });
-  };
-
-  const handleTrashedNote = () => {
-    setNoteInfo((prevNoteData) => {
-      return { ...prevNoteData, isTrashed: !prevNoteData.isTrashed };
-    });
-  };
-
   const handlePriorityChange = (e) => {
     setNoteInfo((prevNoteData) => {
       return { ...prevNoteData, priority: e.target.value };
@@ -104,27 +92,6 @@ export const ModalInput = () => {
               setNoteInfo={setNoteInfo}
             />
 
-            {noteInfo.isArchived ? (
-              <i
-                class="bx bxs-archive-in bx-flip-horizontal mr-16 icon"
-                onClick={handleArchivedNote}
-              ></i>
-            ) : (
-              <i
-                class="bx bx-archive-in bx-flip-horizontal mr-16 icon "
-                onClick={handleArchivedNote}
-              ></i>
-            )}
-
-            {noteInfo.isTrashed ? (
-              <i
-                class="bx bxs-trash mr-16 icon"
-                onClick={handleTrashedNote}
-              ></i>
-            ) : (
-              <i class="bx bx-trash mr-16 icon" onClick={handleTrashedNote}></i>
-            )}
-
             <Dropdown data={tagOptions} setNoteInfo={setNoteInfo} />
 
             <select className="tag mr-16" onChange={handlePriorityChange}>
@@ -138,9 +105,10 @@ export const ModalInput = () => {
             <div className="ml-auto">
               <button
                 className="btn primary-btn"
-                onClick={
-                  buttonType === "Add" ? handleAddNote : handleUpdateNote
-                }
+                onClick={() => {
+                  buttonType === "Add" ? handleAddNote() : handleUpdateNote();
+                  modalDispatch({ type: "CLOSE_MODAL" });
+                }}
               >
                 {buttonType}
               </button>

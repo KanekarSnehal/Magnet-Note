@@ -9,14 +9,15 @@ const NotesProvider = ({ children }) => {
     notes: [],
     noteData: {
       isPinned: false,
-      isTrashed: false,
-      isArchived: false,
       noteColor: "#fff",
+      isArchived: false,
       label: "class",
       priority: "high",
       title: "",
       body: "",
     },
+    archiveNotes: [],
+    trashNotes: [],
   });
 
   return (
@@ -24,7 +25,8 @@ const NotesProvider = ({ children }) => {
       value={{
         notes: noteState.notes,
         noteData: noteState.noteData,
-        currNote: noteState.currNote,
+        archiveNotes: noteState.archiveNotes,
+        trashNotes: noteState.trashNotes,
         noteDispatch,
       }}
     >

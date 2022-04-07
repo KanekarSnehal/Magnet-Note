@@ -5,10 +5,9 @@ import { ModalInput } from "../ModalInput/ModalInput";
 
 export const SideNavigation = () => {
   const { modalState, modalDispatch } = useModal();
-  const { user } = useAuthContext();
   const navigate = useNavigate();
   const { notes, noteData, noteDispatch } = useNotes();
-
+  const firstName = localStorage.getItem("firstName");
   return (
     <div className="sideNav-container ">
       <div className="sideNav-buttons">
@@ -81,7 +80,7 @@ export const SideNavigation = () => {
           className="avatar avatar-xs-size"
           alt="avatar"
         />
-        <span>Hello, Snehal</span>
+        <span>Hello, {firstName}</span>
         <i className="fas fa-sign-out ml-16"></i>
       </div>
     </div>

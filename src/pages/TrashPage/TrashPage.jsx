@@ -1,7 +1,10 @@
 import { Header, SideNavigation, NoteCards } from "../../components/index";
+import { useNotes } from "../../context";
 import { data } from "../../data";
 
 export const TrashPage = () => {
+  const { trashNotes } = useNotes();
+
   return (
     <>
       <Header />
@@ -9,20 +12,11 @@ export const TrashPage = () => {
         <SideNavigation />
         <div className="main-content-container">
           <div>
-            <h4 className="text-center my-16">Pinned</h4>
-            <NoteCards
-              data={data.filter(
-                (dataItem) => dataItem.isPinned && dataItem.isTrashed
-              )}
-            />
-          </div>
-          <div>
-            <h4 className="text-center my-16">Others</h4>
-            <NoteCards
-              data={data.filter(
-                (dataItem) => !dataItem.isPinned && dataItem.isTrashed
-              )}
-            />
+            {trashNotes.length === 0 ? (
+              <h6>No trashed notes added...</h6>
+            ) : (
+              <NoteCards data={trashNotes} disableUpdate trashedNote />
+            )}
           </div>
         </div>
       </div>
