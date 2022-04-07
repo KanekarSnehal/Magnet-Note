@@ -16,7 +16,6 @@ export const LabelPage = () => {
       <div className="display-conatiner">
         <SideNavigation />
         <div className="main-content-container">
-          <UpdateLabels />
           <div>
             <NoteCards data={notes} disableUpdate />
           </div>

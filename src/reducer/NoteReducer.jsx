@@ -82,7 +82,7 @@ export const NoteReducer = (noteState, noteAction) => {
         ...noteState,
         noteData: {
           ...noteAction.payload,
-          isArchived: !noteAction.payload.isTrashed,
+          isTrashed: !noteAction.payload.isTrashed,
         },
       };
 
