@@ -133,7 +133,7 @@ export const NoteCards = ({
                   />
                 )}
 
-                {archivedNote ? (
+                {!trashedNote && archivedNote ? (
                   <i
                     class="bx bxs-archive-in bx-flip-horizontal mr-16 icon"
                     onClick={() => {
@@ -145,13 +145,18 @@ export const NoteCards = ({
                     }}
                   ></i>
                 ) : (
-                  <i
-                    class="bx bx-archive-in bx-flip-horizontal mr-16 icon "
-                    onClick={() => {
-                      noteDispatch({ type: "ARCHIVE_NOTE", payload: dataItem });
-                      handleArchive(dataItem);
-                    }}
-                  ></i>
+                  !trashedNote && (
+                    <i
+                      class="bx bx-archive-in bx-flip-horizontal mr-16 icon "
+                      onClick={() => {
+                        noteDispatch({
+                          type: "ARCHIVE_NOTE",
+                          payload: dataItem,
+                        });
+                        handleArchive(dataItem);
+                      }}
+                    ></i>
+                  )
                 )}
                 {trashedNote ? (
                   <>
@@ -203,7 +208,8 @@ export const NoteCards = ({
                 )}
 
                 <p className="ml-auto">
-                  Created on {new Date(dataItem.createdOn).toDateString()}
+                  Created on {new Date(dataItem.createdOn).toDateString()}{" "}
+                  {new Date(dataItem.createdOn).toLocaleTimeString()}
                 </p>
               </div>
             </div>
