@@ -106,7 +106,7 @@ export const NoteCards = ({
                 <button className=" note-pin badge-top-right ">
                   {dataItem.isPinned ? (
                     <i
-                      class="bx bxs-pin mr-16 icon"
+                      className="bx bxs-pin mr-16 icon"
                       onClick={() =>
                         noteDispatch({
                           type: "PINNING_NOTE",
@@ -116,7 +116,7 @@ export const NoteCards = ({
                     ></i>
                   ) : (
                     <i
-                      class="bx bx-pin mr-16 icon"
+                      className="bx bx-pin mr-16 icon"
                       onClick={() =>
                         noteDispatch({
                           type: "PINNING_NOTE",
@@ -144,7 +144,7 @@ export const NoteCards = ({
 
                 {!trashedNote && archivedNote ? (
                   <i
-                    class="bx bxs-archive-in bx-flip-horizontal mr-16 icon"
+                    className="bx bxs-archive-in bx-flip-horizontal mr-16 icon"
                     onClick={() => {
                       noteDispatch({
                         type: "UNARCHIVE_NOTE",
@@ -156,7 +156,7 @@ export const NoteCards = ({
                 ) : (
                   !trashedNote && (
                     <i
-                      class="bx bx-archive-in bx-flip-horizontal mr-16 icon "
+                      className="bx bx-archive-in bx-flip-horizontal mr-16 icon "
                       onClick={() => {
                         noteDispatch({
                           type: "ARCHIVE_NOTE",
@@ -170,11 +170,11 @@ export const NoteCards = ({
                 {trashedNote ? (
                   <>
                     <i
-                      class="bx bxs-trash mr-16 icon"
+                      className="bx bxs-trash mr-16 icon"
                       onClick={() => removeFromTrash(dataItem)}
                     ></i>
                     <i
-                      class="bx bxs-trash mr-16 icon error-color"
+                      className="bx bxs-trash mr-16 icon error-color"
                       data-tip
                       data-for="deleteTip"
                       onClick={() => {
@@ -190,7 +190,7 @@ export const NoteCards = ({
                   </>
                 ) : (
                   <i
-                    class="bx bx-trash mr-16 icon"
+                    className="bx bx-trash mr-16 icon"
                     onClick={() => {
                       handleDelete(dataItem);
                       noteDispatch({

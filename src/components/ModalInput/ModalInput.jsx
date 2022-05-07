@@ -117,9 +117,15 @@ export const ModalInput = () => {
 
             <button className=" note-pin badge-top-right">
               {noteInfo.isPinned ? (
-                <i class="bx bxs-pin mr-16 icon" onClick={handlePinnedNote}></i>
+                <i
+                  className="bx bxs-pin mr-16 icon"
+                  onClick={handlePinnedNote}
+                ></i>
               ) : (
-                <i class="bx bx-pin mr-16 icon" onClick={handlePinnedNote}></i>
+                <i
+                  className="bx bx-pin mr-16 icon"
+                  onClick={handlePinnedNote}
+                ></i>
               )}
             </button>
           </div>

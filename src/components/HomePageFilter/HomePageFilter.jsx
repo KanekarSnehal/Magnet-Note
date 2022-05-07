@@ -19,7 +19,7 @@ export const HomePageFilter = () => {
         onClick={handleShowFilter}
       >
         <span className="">Filters</span>
-        <i class="bx bx-filter-alt"></i>
+        <i className="bx bx-filter-alt"></i>
       </button>
 
       {showFilter && (
