@@ -13,6 +13,7 @@ export const ModalInput = () => {
   const { show, buttonType } = modalState;
   const { notes, noteData, noteDispatch } = useNotes();
   const [noteInfo, setNoteInfo] = useState(noteData);
+
   const formats = [
     "header",
     "bold",
@@ -154,6 +155,7 @@ export const ModalInput = () => {
                   buttonType === "Add" ? handleAddNote() : handleUpdateNote();
                   modalDispatch({ type: "CLOSE_MODAL" });
                 }}
+                disabled={!noteInfo.title || !noteInfo.body}
               >
                 {buttonType}
               </button>
