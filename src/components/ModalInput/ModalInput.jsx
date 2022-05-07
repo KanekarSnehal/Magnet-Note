@@ -141,6 +141,7 @@ export const ModalInput = () => {
             <Dropdown data={tagOptions} setNoteInfo={setNoteInfo} />
 
             <select className="tag mr-16" onChange={handlePriorityChange}>
+              <option>Select options</option>
               {priorityOptions.map((dataItem) => (
                 <option value={dataItem} key={dataItem}>
                   {dataItem}
