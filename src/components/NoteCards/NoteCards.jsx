@@ -89,6 +89,7 @@ export const NoteCards = ({
             <div
               className="note-input-container grid-item-note "
               style={{ backgroundColor: dataItem.noteColor }}
+              key={dataItem._id}
             >
               <div className="input-text-section">
                 <h6>{dataItem.title}</h6>
