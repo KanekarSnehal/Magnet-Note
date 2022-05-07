@@ -3,6 +3,8 @@ import { useModal, useNotes } from "../../context/index";
 import "./noteInput.css";
 import { addNote, updateNote } from "../../services/noteServices";
 import { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export const ModalInput = () => {
   const tagOptions = ["class", "work", "study"];
@@ -11,6 +13,34 @@ export const ModalInput = () => {
   const { show, buttonType } = modalState;
   const { notes, noteData, noteDispatch } = useNotes();
   const [noteInfo, setNoteInfo] = useState(noteData);
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+  ];
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image"],
+      ["clean"],
+    ],
+  };
 
   const handleChange = (e) => {
     setNoteInfo((prevNoteData) => {
@@ -34,13 +64,16 @@ export const ModalInput = () => {
     try {
       const { data } = await addNote(noteInfo);
       noteDispatch({ type: "NOTE_ADDED", payload: data.notes });
-    } catch (error) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleUpdateNote = async () => {
     try {
       const { data } = await updateNote(noteInfo._id, noteInfo);
       noteDispatch({ type: "NOTE_UPDATED", payload: data.notes });
+      console.log(data.notes);
     } catch (error) {}
   };
 
@@ -63,19 +96,25 @@ export const ModalInput = () => {
               placeholder="Title"
               className="text title"
               onChange={handleChange}
-            >
-              {noteInfo.title}
-            </textarea>
-            <textarea
+              value={noteInfo.title}
+            />
+
+            <ReactQuill
               id="body"
-              name="body"
-              typeof="text"
               placeholder="Take a note..."
               className="text"
-              onChange={handleChange}
-            >
-              {noteInfo.body}
-            </textarea>
+              modules={modules}
+              formats={formats}
+              value={noteInfo.body}
+              preserveWhitespace={true}
+              onChange={(e) => {
+                setNoteInfo((prevNoteData) => ({
+                  ...prevNoteData,
+                  body: e,
+                }));
+              }}
+            />
+
             <button className=" note-pin badge-top-right">
               {noteInfo.isPinned ? (
                 <i class="bx bxs-pin mr-16 icon" onClick={handlePinnedNote}></i>
