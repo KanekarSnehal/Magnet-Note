@@ -13,6 +13,7 @@ export const Dropdown = ({ data, setNoteInfo }) => {
         })
       }
     >
+      <option>Select options</option>
       {data.map((dataItem) => (
         <option value={dataItem} key={dataItem}>
           {dataItem}
