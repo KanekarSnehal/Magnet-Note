@@ -6,7 +6,7 @@ export const LandingPage = () => {
     <div className="landingPage-container">
       <section className="left-section text-left">
         <h1>
-          <span className="primary-text-color">My</span>Website
+          <span className="primary-text-color">Magnet</span>Note
         </h1>
         <div className="content  px-8">
           <h6 className="secondary-text-color">Meet your modern</h6>
