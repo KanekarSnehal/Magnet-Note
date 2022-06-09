@@ -1,37 +1,35 @@
 import "./sidenavigation.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useModal, useNotes } from "../../context";
 import { ModalInput } from "../index";
 
 export const SideNavigation = () => {
   const { modalState, modalDispatch } = useModal();
-  const navigate = useNavigate();
   const { noteDispatch } = useNotes();
+  const isActiveClass = ({ isActive }) =>
+    `side-bar-items ${isActive && "active"}`;
 
   return (
     <>
       <aside className="side-bar-container">
         <ul className="my-16">
-          <li
-            className="side-bar-items active"
-            onClick={() => navigate("/home")}
-          >
+          <NavLink className={isActiveClass} to="/home">
             <i className="bx bx-home"></i>Home
-          </li>
-          <li className="side-bar-items" onClick={() => navigate("/label")}>
+          </NavLink>
+          <NavLink className={isActiveClass} to="/label">
             <i className="bx bx-label"></i>
             Labels
-          </li>
-          <li className="side-bar-items" onClick={() => navigate("/archive")}>
-            <i class="bx bx-archive-in"></i>Archive
-          </li>
-          <li className="side-bar-items" onClick={() => navigate("/trash")}>
-            <i class="bx bx-trash"></i>Trash
-          </li>
-          <li className="side-bar-items" onClick={() => navigate("/profile")}>
-            <i class="bx bx-face"></i>
+          </NavLink>
+          <NavLink className={isActiveClass} to="/archive">
+            <i className="bx bx-archive-in"></i>Archive
+          </NavLink>
+          <NavLink className={isActiveClass} to="/trash">
+            <i className="bx bx-trash"></i>Trash
+          </NavLink>
+          <NavLink className={isActiveClass} to="/profile">
+            <i className="bx bx-face"></i>
             Profile
-          </li>
+          </NavLink>
           <li
             className="side-bar-items"
             onClick={() => {
@@ -39,7 +37,7 @@ export const SideNavigation = () => {
               noteDispatch({ type: "ADD_NOTE" });
             }}
           >
-            <i class="bx bx-plus"></i>Create Note
+            <i className="bx bx-plus"></i>Create Note
           </li>
         </ul>
       </aside>
