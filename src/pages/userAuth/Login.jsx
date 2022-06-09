@@ -42,55 +42,52 @@ export const Login = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <main className="main-container">
-        <div className="form-container">
-          <h4 className="secondary-text-color  text-center">LOG IN</h4>
-          <div className="title-underline"></div>
+    <main className="main-container">
+      <div className="form-container">
+        <h4 className="secondary-text-color  text-center">LOG IN</h4>
+        <div className="title-underline"></div>
 
-          <form className="form-col">
-            <div className="row">
-              <input
-                className="form-field"
-                type="email"
-                placeholder="Enter your email here"
-                name="email"
-                required
-                onChange={onChangeHandler}
-              />
-            </div>
+        <form className="form-col">
+          <div className="row">
+            <input
+              className="form-field"
+              type="email"
+              placeholder="Enter your email here"
+              name="email"
+              required
+              onChange={onChangeHandler}
+            />
+          </div>
 
-            <div className="row">
-              <input
-                className="form-field"
-                type="password"
-                placeholder="Enter your password"
-                name="password"
-                required
-                onChange={onChangeHandler}
-              />
-            </div>
-            <a href="" className="link-btn my-8">
-              Forgot password?
-            </a>
-            <button
-              className="btn primary-btn text-center"
-              type="submit"
-              onClick={postLoginData}
-            >
-              LOGIN
-            </button>
+          <div className="row">
+            <input
+              className="form-field"
+              type="password"
+              placeholder="Enter your password"
+              name="password"
+              required
+              onChange={onChangeHandler}
+            />
+          </div>
+          <a href="" className="link-btn my-8">
+            Forgot password?
+          </a>
+          <button
+            className="btn primary-btn text-center"
+            type="submit"
+            onClick={postLoginData}
+          >
+            LOGIN
+          </button>
 
-            <div className="py-16">
-              Not a user yet?
-              <Link to="/signup" className="link-btn">
-                Create your account
-              </Link>
-            </div>
-          </form>
-        </div>
-      </main>
-    </div>
+          <div className="py-16">
+            Not a user yet?
+            <Link to="/signup" className="link-btn">
+              Create your account
+            </Link>
+          </div>
+        </form>
+      </div>
+    </main>
   );
 };

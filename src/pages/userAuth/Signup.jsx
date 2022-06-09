@@ -49,136 +49,133 @@ export function Signup() {
   };
 
   return (
-    <div>
-      <Header />
-      <main className="main-container">
-        <div className="form-container">
-          <h4 className="secondary-text-color  text-center">SIGN UP</h4>
-          <div className="title-underline"></div>
+    <main className="main-container">
+      <div className="form-container">
+        <h4 className="secondary-text-color  text-center">SIGN UP</h4>
+        <div className="title-underline"></div>
 
-          <form className="form-col">
-            <div className="row">
-              <div className="column-30-pc">
-                <label
-                  htmlFor="first-name"
-                  className="form-label text-bold-weight form-label-required-field"
-                >
-                  First Name
-                </label>
-              </div>
-              <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="text"
-                  placeholder="Enter your first name"
-                  name="firstName"
-                  onChange={onChangeHandler}
-                  required
-                />
-              </div>
+        <form className="form-col">
+          <div className="row">
+            <div className="column-30-pc">
+              <label
+                htmlFor="first-name"
+                className="form-label text-bold-weight form-label-required-field"
+              >
+                First Name
+              </label>
             </div>
-
-            <div className="row">
-              <div className="column-30-pc">
-                <label
-                  htmlFor="first-name"
-                  className="form-label text-bold-weight form-label-required-field"
-                >
-                  Last Name
-                </label>
-              </div>
-              <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="text"
-                  placeholder="Enter your last name"
-                  name="lastName"
-                  onChange={onChangeHandler}
-                  required
-                />
-              </div>
+            <div className="column-70-pc">
+              <input
+                className="form-field"
+                type="text"
+                placeholder="Enter your first name"
+                name="firstName"
+                onChange={onChangeHandler}
+                required
+              />
             </div>
+          </div>
 
-            <div className="row">
-              <div className="column-30-pc">
-                <label
-                  htmlFor="first-name"
-                  className="form-label text-bold-weight form-label-required-field"
-                >
-                  Email
-                </label>
-              </div>
-              <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="email"
-                  placeholder="Enter your email"
-                  name="email"
-                  onChange={onChangeHandler}
-                  required
-                />
-              </div>
+          <div className="row">
+            <div className="column-30-pc">
+              <label
+                htmlFor="first-name"
+                className="form-label text-bold-weight form-label-required-field"
+              >
+                Last Name
+              </label>
             </div>
-
-            <div className="row">
-              <div className="column-30-pc">
-                <label
-                  htmlFor="first-name"
-                  className="form-label text-bold-weight form-label-required-field"
-                >
-                  Password
-                </label>
-              </div>
-              <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="password"
-                  placeholder="Enter password"
-                  name="password"
-                  onChange={onChangeHandler}
-                  required
-                />
-              </div>
+            <div className="column-70-pc">
+              <input
+                className="form-field"
+                type="text"
+                placeholder="Enter your last name"
+                name="lastName"
+                onChange={onChangeHandler}
+                required
+              />
             </div>
+          </div>
 
-            <div className="row">
-              <div className="column-30-pc">
-                <label
-                  htmlFor="first-name"
-                  className="form-label text-bold-weight form-label-required-field"
-                >
-                  Confirm Password
-                </label>
-              </div>
-              <div className="column-70-pc">
-                <input
-                  className="form-field"
-                  type="password"
-                  placeholder="Re-type password"
-                  name="confirmPassword"
-                  onChange={onChangeHandler}
-                  required
-                />
-              </div>
+          <div className="row">
+            <div className="column-30-pc">
+              <label
+                htmlFor="first-name"
+                className="form-label text-bold-weight form-label-required-field"
+              >
+                Email
+              </label>
             </div>
-
-            <button
-              className="btn primary-btn text-center"
-              type="submit"
-              onClick={postSignupData}
-            >
-              REGISTER
-            </button>
-
-            <div className="py-16">
-              Already registered?
-              <Link to="/login" className="link-btn">
-                Login here
-              </Link>
+            <div className="column-70-pc">
+              <input
+                className="form-field"
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                onChange={onChangeHandler}
+                required
+              />
             </div>
-          </form>
-        </div>
-      </main>
-    </div>
+          </div>
+
+          <div className="row">
+            <div className="column-30-pc">
+              <label
+                htmlFor="first-name"
+                className="form-label text-bold-weight form-label-required-field"
+              >
+                Password
+              </label>
+            </div>
+            <div className="column-70-pc">
+              <input
+                className="form-field"
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                onChange={onChangeHandler}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="column-30-pc">
+              <label
+                htmlFor="first-name"
+                className="form-label text-bold-weight form-label-required-field"
+              >
+                Confirm Password
+              </label>
+            </div>
+            <div className="column-70-pc">
+              <input
+                className="form-field"
+                type="password"
+                placeholder="Re-type password"
+                name="confirmPassword"
+                onChange={onChangeHandler}
+                required
+              />
+            </div>
+          </div>
+
+          <button
+            className="btn primary-btn text-center"
+            type="submit"
+            onClick={postSignupData}
+          >
+            REGISTER
+          </button>
+
+          <div className="py-16">
+            Already registered?
+            <Link to="/login" className="link-btn">
+              Login here
+            </Link>
+          </div>
+        </form>
+      </div>
+    </main>
   );
 }

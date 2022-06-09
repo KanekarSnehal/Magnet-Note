@@ -10,11 +10,13 @@ import {
   TrashPage,
   ProfilePage,
 } from "./pages/index";
-import { GuestRoute, ProtectedRoute } from "./utilities/routes.js";
+import { ProtectedRoute } from "./utilities/routes.js";
+import { Header } from "./components";
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />

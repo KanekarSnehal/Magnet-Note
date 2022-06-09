@@ -12,14 +12,11 @@ export const ProfilePage = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className="display-conatiner">
-        <SideNavigation />
-        <button className="btn primary-btn width-40" onClick={logoutHandler}>
-          Logout
-        </button>
-      </div>
-    </>
+    <div className="display-conatiner">
+      <SideNavigation />
+      <button className="btn primary-btn width-40" onClick={logoutHandler}>
+        Logout
+      </button>
+    </div>
   );
 };
