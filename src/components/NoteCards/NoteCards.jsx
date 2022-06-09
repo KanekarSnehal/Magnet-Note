@@ -7,7 +7,7 @@ import {
   updateNote,
   addToArchivedNote,
   deleteNote,
-  removeFromArchivedNote,
+  restoreFromArchivedNote,
   deleteFromArchivedNote,
 } from "../../services/noteServices";
 
@@ -33,7 +33,7 @@ export const NoteCards = ({
   const handleArchive = async (dataItem) => {
     try {
       const { data } = archivedNote
-        ? await removeFromArchivedNote({
+        ? await restoreFromArchivedNote({
             ...dataItem,
             isArchived: false,
           })

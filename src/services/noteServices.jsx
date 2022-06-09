@@ -1,41 +1,30 @@
 import axios from "axios";
 
 const config = {
-  headers: { authorization: localStorage.getItem("token") },
+  headers: { authorization: localStorage.getItem("magnetNoteToken") },
 };
+const notesUrl = "/api/notes";
+const archiveUrl = "/api/notes/archives";
 
-export const getNotes = async () => {
-  return await axios.get(`/api/notes`, config);
-};
+export const getNotes = async () => await axios.get(`${notesUrl}`, config);
 
-export const addNote = async (note) => {
-  return await axios.post(`/api/notes`, { note }, config);
-};
+export const addNote = async (note) =>
+  await axios.post(`${notesUrl}`, { note }, config);
 
-export const updateNote = async (noteID, note) => {
-  return await axios.post(`/api/notes/${noteID}`, { note }, config);
-};
+export const updateNote = async (noteID, note) =>
+  await axios.post(`${notesUrl}/${noteID}`, { note }, config);
 
-export const deleteNote = async (noteID) => {
-  return await axios.delete(`/api/notes/${noteID}`, config);
-};
+export const deleteNote = async (noteID) =>
+  await axios.delete(`${notesUrl}/${noteID}`, config);
 
-export const getArchivedNotes = async () => {
-  return await axios.get(`/api/archives`, config);
-};
+export const getArchivedNotes = async () =>
+  await axios.get(`${archiveUrl}`, config);
 
-export const addToArchivedNote = async (note) => {
-  return await axios.post(`/api/notes/archives/${note._id}`, { note }, config);
-};
+export const addToArchivedNote = async (note) =>
+  await axios.post(`${archiveUrl}/${note._id}`, { note }, config);
 
-export const removeFromArchivedNote = async (note) => {
-  return await axios.post(
-    `/api/archives/restore/${note._id}`,
-    { note },
-    config
-  );
-};
+export const restoreFromArchivedNote = async (note) =>
+  await axios.post(`${archiveUrl}/restore/${note._id}`, config);
 
-export const deleteFromArchivedNote = async (noteID) => {
-  return await axios.delete(`/api/archives/delete/${noteID}`, config);
-};
+export const deleteFromArchivedNote = async (noteID) =>
+  await axios.delete(`${archiveUrl}/delete/${noteID}`, config);
