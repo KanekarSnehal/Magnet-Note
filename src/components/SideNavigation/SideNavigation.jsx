@@ -1,88 +1,49 @@
 import "./sidenavigation.css";
 import { useNavigate } from "react-router-dom";
-import { useModal, useAuthContext, useNotes } from "../../context/index";
-import { ModalInput } from "../ModalInput/ModalInput";
+import { useModal, useNotes } from "../../context";
+import { ModalInput } from "../index";
 
 export const SideNavigation = () => {
   const { modalState, modalDispatch } = useModal();
   const navigate = useNavigate();
-  const { notes, noteData, noteDispatch } = useNotes();
-  const firstName = localStorage.getItem("firstName");
-  return (
-    <div className="sideNav-container ">
-      <div className="sideNav-buttons">
-        <button
-          className={
-            location.pathname === "/home"
-              ? `btn p-md outline-secondary-btn active`
-              : ` btn p-md outline-secondary-btn`
-          }
-          onClick={() => navigate("/home")}
-        >
-          <i className="fas fa-home mr-16 "></i>Home
-        </button>
-        <button
-          className={
-            location.pathname === "/label"
-              ? `btn p-md outline-secondary-btn active`
-              : ` btn p-md outline-secondary-btn`
-          }
-          onClick={() => navigate("/label")}
-        >
-          <i className="fas fa-tags mr-16 "></i>Labels
-        </button>
-        <button
-          className={
-            location.pathname === "/archive"
-              ? `btn p-md outline-secondary-btn active`
-              : ` btn p-md outline-secondary-btn`
-          }
-          onClick={() => navigate("/archive")}
-        >
-          <i className="fas fa-archive mr-16 "></i>Archive
-        </button>
-        <button
-          className={
-            location.pathname === "/trash"
-              ? `btn p-md outline-secondary-btn active`
-              : ` btn p-md outline-secondary-btn`
-          }
-          onClick={() => navigate("/trash")}
-        >
-          <i className="far fa-trash-alt mr-16 "></i>Trash
-        </button>
-        <button
-          className={
-            location.pathname === "/profile"
-              ? `btn p-md outline-secondary-btn active`
-              : ` btn p-md outline-secondary-btn`
-          }
-          onClick={() => navigate("/profile")}
-        >
-          <i className="far fa-user  mr-16"></i>Profile
-        </button>
-      </div>
+  const { noteDispatch } = useNotes();
 
-      <button
-        className="btn primary-btn my-16"
-        onClick={() => {
-          modalDispatch({ type: "ADD_NOTE" });
-          noteDispatch({ type: "ADD_NOTE" });
-        }}
-      >
-        Create New Note
-      </button>
+  return (
+    <>
+      <aside className="side-bar-container">
+        <ul className="my-16">
+          <li
+            className="side-bar-items active"
+            onClick={() => navigate("/home")}
+          >
+            <i className="bx bx-home"></i>Home
+          </li>
+          <li className="side-bar-items" onClick={() => navigate("/label")}>
+            <i className="bx bx-label"></i>
+            Labels
+          </li>
+          <li className="side-bar-items" onClick={() => navigate("/archive")}>
+            <i class="bx bx-archive-in"></i>Archive
+          </li>
+          <li className="side-bar-items" onClick={() => navigate("/trash")}>
+            <i class="bx bx-trash"></i>Trash
+          </li>
+          <li className="side-bar-items" onClick={() => navigate("/profile")}>
+            <i class="bx bx-face"></i>
+            Profile
+          </li>
+          <li
+            className="side-bar-items"
+            onClick={() => {
+              modalDispatch({ type: "ADD_NOTE" });
+              noteDispatch({ type: "ADD_NOTE" });
+            }}
+          >
+            <i class="bx bx-plus"></i>Create Note
+          </li>
+        </ul>
+      </aside>
       {modalState.show && <ModalInput />}
-      <div className="btn outline-primary-btn user-logout  text-bold-weight secondary-text-color">
-        <img
-          loading="lazy"
-          src="avatar.jpg"
-          className="avatar avatar-xs-size"
-          alt="avatar"
-        />
-        <span>Hello, {firstName}</span>
-        <i className="fas fa-sign-out ml-16"></i>
-      </div>
-    </div>
+    </>
   );
 };

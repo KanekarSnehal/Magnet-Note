@@ -8,8 +8,8 @@ export const ModalInput = () => {
   const tagOptions = ["class", "work", "study"];
   const priorityOptions = ["high", "medium", "low"];
   const { modalState, modalDispatch } = useModal();
-  const { show, buttonType } = modalState;
-  const { notes, noteData, noteDispatch } = useNotes();
+  const { buttonType } = modalState;
+  const { noteData, noteDispatch } = useNotes();
   const [noteInfo, setNoteInfo] = useState(noteData);
 
   const handleChange = (e) => {
@@ -51,7 +51,7 @@ export const ModalInput = () => {
     >
       <div className="modal">
         <div
-          className="note-input-container width-60 "
+          className="note-input-container"
           onClick={(e) => e.stopPropagation()}
           style={{ backgroundColor: noteInfo.noteColor }}
         >

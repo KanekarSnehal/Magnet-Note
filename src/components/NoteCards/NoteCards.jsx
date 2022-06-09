@@ -1,7 +1,7 @@
-import { Palette, Label } from "../index";
+import { Palette } from "../index";
 import { useModal, useNotes } from "../../context/index";
 import ReactTooltip from "react-tooltip";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   addNote,
   updateNote,
@@ -17,9 +17,8 @@ export const NoteCards = ({
   archivedNote,
   trashedNote,
 }) => {
-  const { modalState, modalDispatch } = useModal();
-  const { notes, noteData, noteDispatch, archiveNotes, trashNotes } =
-    useNotes();
+  const { modalDispatch } = useModal();
+  const { noteData, noteDispatch } = useNotes();
 
   useEffect(() => {
     (async () => {
@@ -90,7 +89,7 @@ export const NoteCards = ({
               style={{ backgroundColor: dataItem.noteColor }}
             >
               <div className="input-text-section">
-                <h6>{dataItem.title}</h6>
+                <h6 className="input-title">{dataItem.title}</h6>
                 <p>{dataItem.body}</p>
               </div>
               {!disableUpdate && (
