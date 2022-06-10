@@ -21,8 +21,8 @@ export const LandingPage = () => {
             <button className="btn primary-btn">Join Now</button>
           </Link>
           <div>
-            <Link to="login">
-              <a className="link-btn">Already have an account?</a>
+            <Link to="login" className="link-btn">
+              <span>Already have an account?</span>
             </Link>
           </div>
         </div>
