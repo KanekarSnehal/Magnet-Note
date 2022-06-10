@@ -10,6 +10,7 @@ import {
   restoreFromArchivedNote,
   deleteFromArchivedNote,
 } from "../../services/noteServices";
+import DOMPurify from "dompurify";
 
 export const NoteCards = ({
   data,
@@ -87,10 +88,20 @@ export const NoteCards = ({
             <div
               className="note-input-container grid-item-note "
               style={{ backgroundColor: dataItem.noteColor }}
+              key={dataItem._id}
             >
               <div className="input-text-section">
-                <h6 className="input-title">{dataItem.title}</h6>
-                <p>{dataItem.body}</p>
+
+                <h6>{dataItem.title}</h6>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      dataItem.body === "<p><br></p>"
+                        ? ""
+                        : `<p>${dataItem.body}</p>`
+                    ),
+                  }}
+                ></p>
               </div>
               {!disableUpdate && (
                 <button className=" note-pin badge-top-right ">
