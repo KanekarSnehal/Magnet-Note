@@ -10,7 +10,7 @@ export const ArchivePage = () => {
       <div className="main-content-container">
         <div>
           {archiveNotes.length === 0 ? (
-            <h6>No archived notes added...</h6>
+            <h6 className="text-center">No archived notes added...</h6>
           ) : (
             <NoteCards data={archiveNotes} disableUpdate archivedNote />
           )}

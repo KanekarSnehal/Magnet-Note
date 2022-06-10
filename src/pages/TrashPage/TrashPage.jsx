@@ -11,7 +11,7 @@ export const TrashPage = () => {
       <div className="main-content-container">
         <div>
           {trashNotes.length === 0 ? (
-            <h6>No trashed notes added...</h6>
+            <h6 className="text-center">No trashed notes added...</h6>
           ) : (
             <NoteCards data={trashNotes} disableUpdate trashedNote />
           )}

@@ -19,3 +19,15 @@
     color: var(--primary-color);
     width: 5rem;
 }
+
+@media screen and (max-width:900px){
+    .profile-details-container{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:540px){
+    .profile-details-container{
+        width: 90%;
+    }
+}
