@@ -1,4 +1,4 @@
-import { Header, SideNavigation, NoteCards } from "../../components/index";
+import { SideNavigation, NoteCards } from "../../components/index";
 import { useNotes } from "../../context";
 import { data } from "../../data";
 

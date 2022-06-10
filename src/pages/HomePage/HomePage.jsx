@@ -51,26 +51,30 @@ export const HomePage = () => {
     notes
   );
 
+  const pinnedNotes = finalFilteredNotes.filter(
+    (dataItem) => dataItem.isPinned
+  );
+
+  const otherNotes = finalFilteredNotes.filter(
+    (dataItem) => !dataItem.isPinned
+  );
+
   return (
     <div className="display-conatiner">
       <SideNavigation />
       <div className="main-content-container">
         <HomePageFilter />
         <h4 className="text-center my-16">Pinned</h4>
-        {finalFilteredNotes.length === 0 ? (
+        {pinnedNotes.length === 0 ? (
           <h6 className="text-center">No pinned notes added...</h6>
         ) : (
-          <NoteCards
-            data={finalFilteredNotes.filter((dataItem) => dataItem.isPinned)}
-          />
+          <NoteCards data={pinnedNotes} />
         )}
         <h4 className="text-center my-16">Others</h4>
-        {finalFilteredNotes.length === 0 ? (
+        {otherNotes.length === 0 ? (
           <h6 className="text-center">No other notes added...</h6>
         ) : (
-          <NoteCards
-            data={finalFilteredNotes.filter((dataItem) => !dataItem.isPinned)}
-          />
+          <NoteCards data={otherNotes} />
         )}
       </div>
     </div>
