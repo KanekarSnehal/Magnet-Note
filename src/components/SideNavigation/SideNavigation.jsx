@@ -16,10 +16,6 @@ export const SideNavigation = () => {
           <i className="bx bx-home"></i>
           <span className="nav-title">Home</span>
         </NavLink>
-        <NavLink className={isActiveClass} to="/label">
-          <i className="bx bx-label"></i>
-          <span className="nav-title">Labels</span>
-        </NavLink>
         <NavLink className={isActiveClass} to="/archive">
           <i className="bx bx-archive-in"></i>
           <span className="nav-title">Archive</span>

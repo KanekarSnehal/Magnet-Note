@@ -6,7 +6,6 @@ import {
   HomePage,
   Login,
   Signup,
-  LabelPage,
   ArchivePage,
   TrashPage,
   ProfilePage,
@@ -27,7 +26,6 @@ export const AppRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/home" element={<HomePage />} />
-        <Route path="/label" element={<LabelPage />} />
         <Route path="/archive" element={<ArchivePage />} />
         <Route path="/trash" element={<TrashPage />} />
         <Route path="/profile" element={<ProfilePage />} />
