@@ -12,34 +12,36 @@ export const SideNavigation = () => {
   return (
     <>
       <aside className="side-bar-container">
-        <ul className="my-16">
-          <NavLink className={isActiveClass} to="/home">
-            <i className="bx bx-home"></i>Home
-          </NavLink>
-          <NavLink className={isActiveClass} to="/label">
-            <i className="bx bx-label"></i>
-            Labels
-          </NavLink>
-          <NavLink className={isActiveClass} to="/archive">
-            <i className="bx bx-archive-in"></i>Archive
-          </NavLink>
-          <NavLink className={isActiveClass} to="/trash">
-            <i className="bx bx-trash"></i>Trash
-          </NavLink>
-          <NavLink className={isActiveClass} to="/profile">
-            <i className="bx bx-face"></i>
-            Profile
-          </NavLink>
-          <li
-            className="side-bar-items"
-            onClick={() => {
-              modalDispatch({ type: "ADD_NOTE" });
-              noteDispatch({ type: "ADD_NOTE" });
-            }}
-          >
-            <i className="bx bx-plus"></i>Create Note
-          </li>
-        </ul>
+        <NavLink className={isActiveClass} to="/home">
+          <i className="bx bx-home"></i>
+          <span className="nav-title">Home</span>
+        </NavLink>
+        <NavLink className={isActiveClass} to="/label">
+          <i className="bx bx-label"></i>
+          <span className="nav-title">Labels</span>
+        </NavLink>
+        <NavLink className={isActiveClass} to="/archive">
+          <i className="bx bx-archive-in"></i>
+          <span className="nav-title">Archive</span>
+        </NavLink>
+        <NavLink className={isActiveClass} to="/trash">
+          <i className="bx bx-trash"></i>
+          <span className="nav-title">Trash</span>
+        </NavLink>
+        <NavLink className={isActiveClass} to="/profile">
+          <i className="bx bx-face"></i>
+          <span className="nav-title">Profile</span>
+        </NavLink>
+        <li
+          className=" side-bar-items mx-16"
+          onClick={() => {
+            modalDispatch({ type: "ADD_NOTE" });
+            noteDispatch({ type: "ADD_NOTE" });
+          }}
+        >
+          <i className="bx bx-plus"></i>
+          <span className="nav-title">Create Note</span>
+        </li>
       </aside>
       {modalState.show && <ModalInput />}
     </>

@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 6.25rem 1fr;
   grid-template-areas: "sidebar main";
+  gap: 1rem;
 }
 
 .grid-item-note {

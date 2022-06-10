@@ -2,12 +2,13 @@
   grid-area: sidebar;
   position: fixed;
   height: 100%;
-  width: 6.25rem;
+  width: 6rem;
   top:-10;
   left: 0;
   padding: 0 0.5rem;
   overflow: auto;
   box-shadow: 4px 8px 12px 0 rgb(0 0 0 / 5%);
+  margin: 1.5rem 0;
 }
 
 .side-bar-items{
@@ -38,7 +39,22 @@
 }
 
 @media screen and (max-width: 768px){
-.side-bar-container{
- display: none;
-}
+  .side-bar-container{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    margin: 0;
+  }
+
+  .side-bar-items{
+    margin-bottom: 0;
+  }
+
+  .nav-title{
+    display: none;
+  }
 }
