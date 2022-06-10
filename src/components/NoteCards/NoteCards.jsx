@@ -1,13 +1,13 @@
-import { Palette, Label } from "../index";
+import { Palette } from "../index";
 import { useModal, useNotes } from "../../context/index";
 import ReactTooltip from "react-tooltip";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   addNote,
   updateNote,
   addToArchivedNote,
   deleteNote,
-  removeFromArchivedNote,
+  restoreFromArchivedNote,
   deleteFromArchivedNote,
 } from "../../services/noteServices";
 import DOMPurify from "dompurify";
@@ -18,9 +18,8 @@ export const NoteCards = ({
   archivedNote,
   trashedNote,
 }) => {
-  const { modalState, modalDispatch } = useModal();
-  const { notes, noteData, noteDispatch, archiveNotes, trashNotes } =
-    useNotes();
+  const { modalDispatch } = useModal();
+  const { noteData, noteDispatch } = useNotes();
 
   useEffect(() => {
     (async () => {
@@ -34,7 +33,7 @@ export const NoteCards = ({
   const handleArchive = async (dataItem) => {
     try {
       const { data } = archivedNote
-        ? await removeFromArchivedNote({
+        ? await restoreFromArchivedNote({
             ...dataItem,
             isArchived: false,
           })

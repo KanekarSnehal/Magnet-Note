@@ -1,16 +1,15 @@
 import "./homePage.css";
 import {
-  Header,
   SideNavigation,
   NoteCards,
   HomePageFilter,
 } from "../../components/index";
-import { useModal, useNotes } from "../../context/index";
+import { useNotes } from "../../context/index";
 import { useFilter } from "../../context/index";
 
 export const HomePage = () => {
-  const { notes, noteData, noteDispatch, currNote } = useNotes();
-  const { filterState, filterDispatch } = useFilter();
+  const { notes } = useNotes();
+  const { filterState } = useFilter();
 
   const sortByTime = (filterState, notes) => {
     if (filterState.sortBy === "NEWEST_FIRST")
@@ -51,39 +50,33 @@ export const HomePage = () => {
     filterState,
     notes
   );
+
+  const pinnedNotes = finalFilteredNotes.filter(
+    (dataItem) => dataItem.isPinned
+  );
+
+  const otherNotes = finalFilteredNotes.filter(
+    (dataItem) => !dataItem.isPinned
+  );
+
   return (
-    <>
-      <Header />
-      <div className="display-conatiner">
-        <SideNavigation />
-        <div className="main-content-container">
-          <HomePageFilter />
-          <div>
-            <h4 className="text-center my-16">Pinned</h4>
-            {finalFilteredNotes.length === 0 ? (
-              <h6>No pinned notes added...</h6>
-            ) : (
-              <NoteCards
-                data={finalFilteredNotes.filter(
-                  (dataItem) => dataItem.isPinned
-                )}
-              />
-            )}
-          </div>
-          <div>
-            <h4 className="text-center my-16">Others</h4>
-            {finalFilteredNotes.length === 0 ? (
-              <h6>No other notes added...</h6>
-            ) : (
-              <NoteCards
-                data={finalFilteredNotes.filter(
-                  (dataItem) => !dataItem.isPinned
-                )}
-              />
-            )}
-          </div>
-        </div>
+    <div className="display-conatiner">
+      <SideNavigation />
+      <div className="main-content-container">
+        <HomePageFilter />
+        <h4 className="text-center my-16">Pinned</h4>
+        {pinnedNotes.length === 0 ? (
+          <h6 className="text-center">No pinned notes added...</h6>
+        ) : (
+          <NoteCards data={pinnedNotes} />
+        )}
+        <h4 className="text-center my-16">Others</h4>
+        {otherNotes.length === 0 ? (
+          <h6 className="text-center">No other notes added...</h6>
+        ) : (
+          <NoteCards data={otherNotes} />
+        )}
       </div>
-    </>
+    </div>
   );
 };

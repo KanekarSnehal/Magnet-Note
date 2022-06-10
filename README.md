@@ -1,26 +1,38 @@
 <div align="center">
   <img src="public/icon.png" width="150" title="Magnet Note App Logo">
 
-## [Note Ap](https://magnet-note-app.netlify.app)
+# [Magnet Note](https://magnet-note.netlify.app/)
 
-E-commerce application for Crockery.
+Magnet Note is an easy to use, minimalistic note-taking app which would really help in improving your daily productivity as well as inculcate a habit of writing down various resources such as study resources, groceries, day to day tasks, etc.
 
 </div>
 
 ---
 
-## Deployed Link
+## How to run the app locally?
 
-Checkout the live demo [here](https://magnet-note-app.netlify.app)
+```
+$ git clone https://github.com/KanekarSnehal/Magnet-Note.git
+$ cd Magnet-Note
+$ npm install
+$ npm start
+```
 
 ---
 
-## Built With
+## Deployed Link
 
-- React JS v17.0.2
+Checkout the live demo [here](https://magnet-note.netlify.app/)
+
+---
+
+## Tech Stack and Tools
+
+- React JS
 - React Router v6
+- React Context API + useReducer
 - MagnetUI Component Library
-- JavaScript
+- Netlify for Deployment
 
 ---
 

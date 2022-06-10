@@ -1,32 +1,36 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {
-  LandingPage,
-  HomePage,
-  Login,
-  Signup,
-  LabelPage,
-  ArchivePage,
-  TrashPage,
-  ProfilePage,
-} from "./pages/index";
-import { GuestRoute, ProtectedRoute } from "./utilities/routes.js";
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./utilities/routes.js";
+import { Header } from "./components";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/label" element={<LabelPage />} />
-          <Route path="/archive" element={<ArchivePage />} />
-          <Route path="/trash" element={<TrashPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        </Route>
-      </Routes>
+      <Header />
+      <Toaster
+        position="bottom-center"
+        gutter={10}
+        toastOptions={{
+          style: {
+            color: "#fff",
+          },
+          success: {
+            iconTheme: {
+              primary: "green",
+            },
+            style: {
+              background: "#22DD22",
+            },
+          },
+          error: {
+            style: {
+              background: "red",
+            },
+          },
+        }}
+      />
+      <AppRoutes />
     </BrowserRouter>
   );
 }
