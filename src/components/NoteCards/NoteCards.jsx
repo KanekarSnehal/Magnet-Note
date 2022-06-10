@@ -91,7 +91,6 @@ export const NoteCards = ({
               key={dataItem._id}
             >
               <div className="input-text-section">
-
                 <h6>{dataItem.title}</h6>
                 <p
                   dangerouslySetInnerHTML={{

@@ -9,7 +9,7 @@
     "axios": "^0.24.0",
     "boxicons": "^2.1.2",
     "dayjs": "^1.10.7",
-    "dompurify": "^2.3.6",
+    "dompurify": "^2.3.8",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.42",
