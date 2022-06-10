@@ -1,5 +1,4 @@
-import { Header, SideNavigation, NoteCards } from "../../components/index";
-import { data } from "../../data";
+import { SideNavigation, NoteCards } from "../../components/index";
 import { useNotes } from "../../context/index";
 
 export const ArchivePage = () => {

@@ -1,6 +1,5 @@
 import { SideNavigation, NoteCards } from "../../components/index";
 import { useNotes } from "../../context";
-import { data } from "../../data";
 
 export const TrashPage = () => {
   const { trashNotes } = useNotes();
