@@ -1,0 +1,33 @@
+.profile-details-container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 40%;
+    gap: 0.5rem;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1rem;
+    box-shadow: #32325d40 0px 6px 12px -2px, #0000004d 0px 3px 7px -3px;
+}
+
+.profile-info{
+    display: flex;
+    font-size: 1.1rem;
+}
+
+.profile-info > :first-child{
+    font-weight: 900;
+    color: var(--primary-color);
+    width: 5rem;
+}
+
+@media screen and (max-width:900px){
+    .profile-details-container{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:540px){
+    .profile-details-container{
+        width: 90%;
+    }
+}

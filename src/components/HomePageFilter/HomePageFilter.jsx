@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Dropdown } from "../index";
-import { useFilter } from "../../context/index";
+import { useFilter } from "../../context";
 
 export const HomePageFilter = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -15,11 +14,11 @@ export const HomePageFilter = () => {
   return (
     <>
       <button
-        className="btn primary-btn width-fit-content display-flex-row p-sm"
+        className="btn primary-btn width-fit-content"
         onClick={handleShowFilter}
       >
         <span className="">Filters</span>
-        <i class="bx bx-filter-alt"></i>
+        <i className="bx bx-filter-alt"></i>
       </button>
 
       {showFilter && (
