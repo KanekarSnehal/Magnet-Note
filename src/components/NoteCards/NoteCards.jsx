@@ -11,6 +11,7 @@ import {
   deleteFromArchivedNote,
 } from "../../services/noteServices";
 import DOMPurify from "dompurify";
+import toast from "react-hot-toast";
 
 export const NoteCards = ({
   data,
@@ -33,21 +34,16 @@ export const NoteCards = ({
   const handleArchive = async (dataItem) => {
     try {
       const { data } = archivedNote
-        ? await restoreFromArchivedNote({
-            ...dataItem,
-            isArchived: false,
-          })
-        : await addToArchivedNote({
-            ...dataItem,
-            isArchived: true,
-          });
+        ? await restoreFromArchivedNote(dataItem._id)
+        : await addToArchivedNote(dataItem);
       noteDispatch({
         type: "SET_ARCHIVE_NOTES",
         payload1: data.notes,
         payload2: data.archives,
       });
-    } catch (error) {
-      console.log(error);
+      toast.success(`Archived Notes Updated!`);
+    } catch (e) {
+      toast.error(e?.response?.data?.errors[0]);
     }
   };
 
@@ -56,15 +52,17 @@ export const NoteCards = ({
       if (archivedNote) {
         const { data } = await deleteFromArchivedNote(dataItem._id);
         noteDispatch({ type: "DELETED_FROM_ARCHIVE", payload: data.archives });
+        toast.success(`Note Deleted from Archived Notes!`);
       } else if (trashedNote) {
         const { data } = await deleteNote(dataItem._id);
         noteDispatch({ type: "DELETED_FROM_TRASH", payload: data.notes });
+        toast.success(`Note Deleted Permanently!`);
       } else {
         noteDispatch({ type: "ADD_TO_TRASH", payload: dataItem });
         const { data } = await deleteNote(dataItem._id);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      toast.error(e?.response?.data?.errors[0]);
     }
   };
 
@@ -76,10 +74,12 @@ export const NoteCards = ({
         type: "REMOVE_FROM_TRASH",
         payload: dataItem,
       });
-    } catch (error) {
-      console.log(error);
+      toast.success(`Note Removed from Trash Successfully!`);
+    } catch (e) {
+      toast.error(e?.response?.data?.errors[0]);
     }
   };
+
   return (
     <>
       <div className="notes-keeping-area ">
@@ -182,6 +182,7 @@ export const NoteCards = ({
                           type: "REMOVE_FROM_TRASH",
                           payload: dataItem,
                         });
+                        toast.success(`Note Deleted Permanently!`);
                       }}
                     ></i>
                     <ReactTooltip id="deleteTip" place="top" effect="solid">

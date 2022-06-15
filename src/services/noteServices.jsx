@@ -23,8 +23,8 @@ export const getArchivedNotes = async () =>
 export const addToArchivedNote = async (note) =>
   await axios.post(`${archiveUrl}/${note._id}`, { note }, config);
 
-export const restoreFromArchivedNote = async (note) =>
-  await axios.post(`${archiveUrl}/restore/${note._id}`, config);
+export const restoreFromArchivedNote = async (noteId) =>
+  await axios.post(`api/archives/restore/${noteId}`, {}, config);
 
-export const deleteFromArchivedNote = async (noteID) =>
-  await axios.delete(`${archiveUrl}/delete/${noteID}`, config);
+export const deleteFromArchivedNote = async (noteId) =>
+  await axios.delete(`api/archives/delete/${noteId}`, config);
