@@ -1,6 +1,6 @@
 .display-conatiner {
   display: grid;
-  grid-template-columns: 6.25rem 1fr;
+  grid-template-columns: 7rem 1fr;
   grid-template-areas: "sidebar main";
   gap: 1rem;
 }

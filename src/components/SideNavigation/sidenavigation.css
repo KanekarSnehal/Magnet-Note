@@ -2,7 +2,7 @@
   grid-area: sidebar;
   position: fixed;
   height: 100%;
-  width: 6rem;
+  width: 6.5rem;
   top:-10;
   left: 0;
   padding: 0 0.5rem;
@@ -48,6 +48,9 @@
     width: 100%;
     display: flex;
     margin: 0;
+    background-color: var(--secondary-light);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius:0.5rem;
   }
 
   .side-bar-items{
