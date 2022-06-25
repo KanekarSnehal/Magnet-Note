@@ -16,6 +16,10 @@
   background-color: initial;
 }
 
+.input-text-section h6{
+  width: 90%;
+}
+
 .note-pin {
   border: none;
   background-color: initial;
