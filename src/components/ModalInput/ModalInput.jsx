@@ -5,6 +5,7 @@ import { addNote, updateNote } from "../../services/noteServices";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import toast from "react-hot-toast";
 
 export const ModalInput = () => {
   const tagOptions = ["class", "work", "study"];
@@ -65,8 +66,9 @@ export const ModalInput = () => {
     try {
       const { data } = await addNote(noteInfo);
       noteDispatch({ type: "NOTE_ADDED", payload: data.notes });
+      toast.success(`New Note Added Successfully!`);
     } catch (e) {
-      console.log(e);
+      toast.error(e?.response?.data?.errors[0]);
     }
   };
 
@@ -74,8 +76,10 @@ export const ModalInput = () => {
     try {
       const { data } = await updateNote(noteInfo._id, noteInfo);
       noteDispatch({ type: "NOTE_UPDATED", payload: data.notes });
-      console.log(data.notes);
-    } catch (error) {}
+      toast.success(`Note Updated Successfully!`);
+    } catch (e) {
+      toast.error(e?.response?.data?.errors[0]);
+    }
   };
 
   return (

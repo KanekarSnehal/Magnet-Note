@@ -1,6 +1,6 @@
 .display-conatiner {
   display: grid;
-  grid-template-columns: 6.25rem 1fr;
+  grid-template-columns: 7rem 1fr;
   grid-template-areas: "sidebar main";
   gap: 1rem;
 }
@@ -26,7 +26,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(18rem,1fr));
   grid-gap: 2rem 1.5rem;
-  margin: 1rem;
+  margin: 1rem 1rem 3rem 1rem;
   align-items: stretch;
 }
 
