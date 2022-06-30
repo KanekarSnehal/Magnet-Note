@@ -36,12 +36,25 @@ Checkout the live demo [here](https://magnet-note.netlify.app/)
 
 ---
 
-### Features
+## Features
 
 - Landing page
+- Notes
+  - User can create a note with title and description
+  - Note description has Rich Text Editor
+  - User can choose a background color for note
+  - User can add labels to note
+  - User can archieve a note
+  - User can trash a note
 - Home page with filtering options
-- Labels page
+  - User can filter notes by latest, oldest, priority and tags
 - Archive page
+  - User can view his/her archieved notes
 - Trash Page
-- Profile page
+  - User can view his/her trash notes
 - User Authentication - Signup and Login pages
+
+## Screens
+
+<img src="src/assets/landing-page.png" width="100%" title="landing_page">
+<img src="src/assets/note-home-page.png" width="100%" title="home_page">
