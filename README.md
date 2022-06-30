@@ -3,7 +3,7 @@
 
 # [Magnet Note](https://magnet-note.netlify.app/)
 
-Magnet Note is an easy to use, minimalistic note-taking app which would really help in improving your daily productivity as well as inculcate a habit of writing down various resources such as study resources, groceries, day to day tasks, etc.
+Magnet Note is an easy to use, minimalistic note-taking app which would really help in improving your daily productivity as well as inculcate a habit of writing down various resources such as study resources, groceries, and day to day tasks.
 
 </div>
 
