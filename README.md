@@ -56,5 +56,6 @@ Checkout the live demo [here](https://magnet-note.netlify.app/)
 
 ## Screens
 
-<img src="src/assets/landing-page.png" width="100%" title="landing_page">
+<img src="src/assets/landing-page.PNG" width="100%" title="landing_page">
+<br/>
 <img src="src/assets/note-home-page.png" width="100%" title="home_page">
