@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/icon.png" width="150" title="Magnet Note App Logo">
+  <img src="public/favicon.ico" width="150" title="Magnet Note App Logo">
 
 # [Magnet Note](https://magnet-note.netlify.app/)
 
