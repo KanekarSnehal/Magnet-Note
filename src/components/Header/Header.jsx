@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <header className="header-container">
       <Link className="logo-container" to={authToken ? "/home" : "/"}>
-        <img src="icon.png" alt="logo" className="brand-logo" />
+        <img src="favicon.ico" alt="logo" className="brand-logo" />
         <span className="brand-name">Magnet Note </span>
       </Link>
     </header>
